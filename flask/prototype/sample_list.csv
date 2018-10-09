@@ -1,0 +1,25 @@
+Item#,Item,Category
+1,Asparagus,produce
+2,Broccoli,produce
+3,Carrots,produce
+4,Cauliflower,produce
+5,Celery,produce
+6,Corn,produce
+7,Cucumbers,produce
+8,Lettuce,produce
+9,Mushrooms,produce
+10,Onions,produce
+11,Peppers,produce
+12,Potatoes,produce
+13,Spinach,produce
+14,Squash,produce
+15,Zucchini,produce
+16,Tomatoes,produce
+17,Applesauce,canned_food
+18,Baked beans,canned_food
+19,Chili,canned_food
+20,Fruit,canned_food
+21,Olives,canned_food
+22,Tinned meats,canned_food
+23,Tuna,canned_food
+24,Soups,canned_food
