@@ -6,7 +6,7 @@ Application to help users develop grocery list, form recipes, and plan meals bas
 ## Architecture
 ### Data Structure
 The Recepticon application is made up of several different data tables. There are 4 primary
-data tables that make up the application. These data are stored in the ... defined above in the [Architecture](#Architecture) section.
+data tables that make up the application. These data are stored in the ... defined above in the [Architecture](#architecture) section.
 #### Account Data
 Each time a new account is initiated, the user vital characteristics and attributed are stored
 to the *Account Data* table. This data is mostly initiated during the account set-up sequence
