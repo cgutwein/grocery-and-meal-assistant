@@ -11,14 +11,16 @@ data tables that make up the application. These data are stored in the ... defin
 Each time a new account is initiated, the user vital characteristics and attributed are stored
 to the *Account Data* table. This data is mostly initiated during the account set-up sequence
 but can be adjusted at any time manually by the user. The data is in the form:
-| Username      | Password      | Age      | ... |
-| ------------- | ------------- | -------- | --- |
-| alpha_bob     | kanye000000   | 45       | ... |
-| beta_cathy    | pw123         | 61       | ... |
+
+| Username      | Password      | Age      | ... | ... | Allergies       |
+| ------------- | ------------- | -------- | --- | --- | --------------- |
+| alpha_bob     | kanye000000   | 45       | ... | ... | [peanut, gluten]|
+| beta_cathy    | pw123         | 61       | ... | ... |  []             |
 
 #### Grocery List Data
 Users can upload or create a grocery list. A historical set of grocery lists can be stored in a
 user account to access or duplicate for later use. Grocery list data is stored in a data table that takes the form:
+
 | Username      | Timestamp            | Title          | Items           |
 | ------------- | ---------------------| -------------- | --------------- |
 | alpha_bob     | 10-11-2018 08:00:00  | routine_list1  | [list of items] |
