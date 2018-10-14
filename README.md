@@ -43,6 +43,11 @@ Recepticon is a hybrid recommendation system which takes into account user prefe
 #### Collaborative Filtering
 
 ## Architecture
+* Flask - front-end for web application
+* Python 3 - back-end code for Recommendation System, user management, and other tooling
+* Sci-kit-learn - machine learning toolkit utilized for knowledge-based recommendation system
+* Reserved - Relational database for storing data
+
 ![First draft - Recepticon architecture.](https://raw.githubusercontent.com/cgutwein/grocery-and-meal-assistant/master/arch_01.PNG)
 ### Data Structure
 The Recepticon application is made up of several different data tables. There are 5 primary
