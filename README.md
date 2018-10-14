@@ -4,8 +4,9 @@ Application to help users develop grocery list, form recipes, and plan meals bas
 ## Introduction
 
 ## Architecture
+![First draft - Recepticon architecture.](https://raw.githubusercontent.com/cgutwein/grocery-and-meal-assistant/master/arch_01.png)
 ### Data Structure
-The Recepticon application is made up of several different data tables. There are 4 primary
+The Recepticon application is made up of several different data tables. There are 5 primary
 data tables that make up the application. These data are stored in the ... defined above in the [Architecture](#architecture) section.
 #### Account Data
 Each time a new account is initiated, the user vital characteristics and attributed are stored
