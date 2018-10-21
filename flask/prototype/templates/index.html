@@ -1,22 +1,21 @@
-<html>
-	<head>
-		<title>Recepticon</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
-	<body>
+{% extends "base.html" %}
+
+{% block content %}
 		<div class="container">
+			{% if current_user.is_anonymous %}
 			<h1 align="center">Welcome to the Recepticon</h1>
+			{% else %}
+			<h1 align="center">Hello {{current_user.username}}, welcome to the Recepticon</h1>
+			{% endif %}
 			<br />
 			<h2 align="center"><img src="static/recepticon.png" alt="Recepticon Logo"></h2>
 			<br />
 			<div align="center">
-				<form action = "http://localhost:5000/results" method = "POST" 
+				<form action = "http://localhost:5000/results" method = "POST"
 					enctype = "multipart/form-data">
 					<h3 align="center">Optimize By</h3>
 						<input type="radio" name="user_options" value="1" /> Budget
-						<input type="radio" name="user_options" value="2" /> Nutrition 
+						<input type="radio" name="user_options" value="2" /> Nutrition
 						<input type="radio" name="user_options" value="3" /> Personal Taste
 						<input type="radio" name="user_options" value="4" /> Cooking Time
 					<br />
@@ -29,12 +28,11 @@
 						</datalist>
 					<br />
 
-					<h3 align="center">Upload List</h3>	
+					<h3 align="center">Upload List</h3>
 						<input type = "file" name = "file" />
 						<input type = "submit"/>
 				</form>
 			</div>
 		</div>
-      
-	</body>
-</html>
+
+{% endblock %}
