@@ -1,21 +1,39 @@
 from prototype import app
 from shutil import copyfile
 from flask import render_template, flash, redirect, request
-from prototype.forms import LoginForm
+from prototype.forms import LoginForm, RegistrationForm, PreferencesForm
 from flask_login import current_user, login_user, logout_user, login_required
 from prototype.models import User
 from werkzeug.urls import url_parse
 from prototype import db
-from prototype.forms import RegistrationForm
 from werkzeug import secure_filename
 import tablib
 import os
 
 @app.route('/')
+@app.route('/home')
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    form = PreferencesForm()
+    if form.validate_on_submit():
+        age = form.userage.data
+        height = form.userheight.data
+        weight = form.userweight.data
+        gender = form.usergender.data
+        gym = form.usergym.data
+        goals = form.usergoals.data
+        restrictions = form.userspecs.data
+        cuisine = form.usercuisine.data
+        complexity = form.usercomplex.data
+        day_meal = form.usermeal.data
+        recipe_file = form.userrecipe.data
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = '/results'
+        return redirect(next_page)
+        return redirect('/results')
+    return render_template('index.html', title='Home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -62,11 +80,10 @@ def mycopy(fname):
    return dataset.html
 
 @app.route('/results', methods = ['GET', 'POST'])
-def upload_file():
+def results():
    if request.method == 'POST':
-      radio_selection = request.form['user_options']
-      list_selection = request.form['city']
-      f = request.files['file']
+      usr_gym = request.form['usergym']
+      f = request.files['userrecipe']
       f.save(secure_filename(f.filename))
       result_page = mycopy(f.filename)
-      return result_page
+      return render_template('results.html', title='Results', usr_gym=usr_gym)
