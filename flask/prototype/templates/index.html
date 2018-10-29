@@ -28,62 +28,62 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p align="center">
+        <div align="center">
             {{ form.usergender.label }}<br>
             {{ form.usergender }}<br>
             {% for error in form.usergender.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.usergym.label }}<br>
             {{ form.usergym }}<br>
             {% for error in form.usergym.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.usergoals.label }}<br>
             {{ form.usergoals }}<br>
             {% for error in form.usergoals.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.userspecs.label }}<br>
             {{ form.userspecs }}<br>
             {% for error in form.userspecs.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.usercuisine.label }}<br>
             {{ form.usercuisine }}<br>
             {% for error in form.usercuisine.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.usercomplex.label }}<br>
             {{ form.usercomplex }}<br>
             {% for error in form.usercomplex.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.usermeal.label }}<br>
             {{ form.usermeal }}<br>
             {% for error in form.usermeal.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">
+        </div>
+        <div align="center">
             {{ form.userrecipe.label }}<br>
             {{ form.userrecipe }}<br>
             {% for error in form.userrecipe.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p align="center">{{ form.submit() }}</p>
+        </div> <br>
+        <div align="center">{{ form.submit() }}</div>
     </form>
 {% endblock %}
