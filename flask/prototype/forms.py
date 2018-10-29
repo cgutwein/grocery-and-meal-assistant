@@ -40,3 +40,12 @@ class PreferencesForm(FlaskForm):
     usermeal = RadioField('Select the meal of the day', default='b', choices=[('b', 'Breakfast'), ('l', 'Lunch'), ('d', 'dinner')], validators=[DataRequired()])
     userrecipe = FileField('Upload Recipe', validators=[DataRequired()])
     submit = SubmitField('Give me recipes!!!')
+
+class GroceryListForm(FlaskForm):
+    load = SubmitField('Load Grocery List')
+    new_name = StringField('e.g. my list')
+    new_submit = SubmitField('Create New List')
+
+class GrocerySearchForm(FlaskForm):
+    query = StringField('Search groceries...', validators=[DataRequired()])
+    submit = SubmitField('Go!')

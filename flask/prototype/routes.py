@@ -1,7 +1,7 @@
 from prototype import app
 from shutil import copyfile
 from flask import render_template, flash, redirect, request
-from prototype.forms import LoginForm, RegistrationForm, PreferencesForm
+from prototype.forms import LoginForm, RegistrationForm, PreferencesForm, GrocerySearchForm
 from flask_login import current_user, login_user, logout_user, login_required
 from prototype.models import User
 from werkzeug.urls import url_parse
@@ -9,6 +9,8 @@ from prototype import db
 from werkzeug import secure_filename
 import tablib
 import os
+from prototype.custom_functions import grocery
+import pandas as pd
 
 @app.route('/')
 @app.route('/home')
@@ -87,3 +89,16 @@ def results():
       f.save(secure_filename(f.filename))
       result_page = mycopy(f.filename)
       return render_template('results.html', title='Results', usr_gym=usr_gym)
+
+@app.route('/grocery', methods=['GET', 'POST'])
+def grocery_list_gen():
+    if current_user.is_authenticated:
+        form = GrocerySearchForm()
+        if form.validate_on_submit():
+            ingredients = pd.read_csv('../python/files/ingr_list.csv')
+            series = ingredients['ingredient']
+            table_string = grocery.ingr_search(form.query.data, series)
+            return render_template('grocery.html', title='Grocery List - Current', form=form, table_string=table_string)
+        return render_template('grocery.html', title='Grocery List - Current', form=form)
+    else:
+        return redirect('/index')
