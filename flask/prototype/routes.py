@@ -98,7 +98,16 @@ def grocery_list_gen():
             ingredients = pd.read_csv('../python/files/ingr_list.csv')
             series = ingredients['ingredient']
             table_string = grocery.ingr_search(form.query.data, series)
+            if table_string == []:
+                table_string = "No results generated from search.Try again."
             return render_template('grocery.html', title='Grocery List - Current', form=form, table_string=table_string)
         return render_template('grocery.html', title='Grocery List - Current', form=form)
+    else:
+        return redirect('/index')
+
+@app.route('/grocery_list', methods=['GET', 'POST'])
+def grocery_list():
+    if current_user.is_authenticated:
+        return render_template('grocery_list.html', title='Grocery List - Current')
     else:
         return redirect('/index')

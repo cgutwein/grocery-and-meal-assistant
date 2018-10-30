@@ -6,4 +6,4 @@ def ingr_search(query, series):
     for row in query_results:
         #print(row)
         items.append(Ingr(row, '/index'))
-    return (IngrTable(items, html_attrs={'align':'center'}))
+    return (IngrTable(items, html_attrs={'align':'center', 'class': 'table table-hover'}))
