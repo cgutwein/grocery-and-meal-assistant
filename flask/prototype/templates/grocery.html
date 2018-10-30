@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 align="center">Search for Groceries</h1>
+<p align="center"> Enter the name or partial name of an item you would like to add to your grocery list below. When possible, entering in the singular type of item (i.e. "strawberry" rather than "strawberries") will yield better search results.</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+<form action="" method="post" novalidate>
+		{{ form.hidden_tag() }}
+		<p align="center">
+				{{ form.query(size=32) }}
+				{% for error in form.query.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+				{{ form.submit(size=32) }}<br>
+				{% for error in form.submit.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+		</p>
+</form>
+</div>
+<div class ="col-sm-6">
+<h3 align="center">Search Results</h3><br>
+<div class="container">
+{% if table_string %}
+<p align="center">{{table_string}}</p>
+{% else %}
+<p align="center">No results generated from search.Try again.</p>
+{% endif %}
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

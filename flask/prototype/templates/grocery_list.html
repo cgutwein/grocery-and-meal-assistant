@@ -1,0 +1,54 @@
+<style>
+  .tab1 {
+    position: absolute, left:50px;
+  }
+</style>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 align="center">Your Grocery Lists</h1>
+<p align="center">The Recepticon Recipe Recommendation system works from a grocery list that you provide. You will need to either create a new list or load from a saved list.<br><br>
+<a href="/grocery" role="button" align="center" class="btn btn-primary">Search for Groceries!</a></p><br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+      <p align="center"><a href="#" role="button" class="btn btn-success">Create New List</a></p>
+      <h5 align="center">Your Saved Lists</h5>
+    	<p align="center">
+        <table align="center">
+          <tr>
+            <td><u>My First Shopping List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
+            <tr><td><u>Budget Friendly</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
+            <tr><td><u>Dinner Party List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
+        </table>
+	    </p>
+    </div>
+  <div class ="col-sm-8">
+    <h5 align="center">Current List</h5><br>
+    <p align="center">
+      <table align="center" class="table table-hover">
+        <tr>
+          <th>Item</th>
+        </tr>
+        <tr>
+          <td>Apple</td>
+        </tr>
+        <tr>
+          <td>Banana</td>
+        </tr>
+        <tr>
+          <td>Cherries</td>
+        </tr>
+        <tr>
+          <td>...</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
