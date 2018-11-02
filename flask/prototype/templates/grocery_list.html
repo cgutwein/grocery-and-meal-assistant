@@ -13,38 +13,58 @@
 <a href="/grocery" role="button" align="center" class="btn btn-primary">Search for Groceries!</a></p><br>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4">
-      <p align="center"><a href="#" role="button" class="btn btn-success">Create New List</a></p>
+		<div class="col-sm-6">
+      <form action="" method="post" novalidate>
+      		{{ form.hidden_tag() }}
+      		<p align="center">
+      				{{ form.new_name(size=32) }}
+      				{% for error in form.new_name.errors %}
+      				<span style="color: red;">[{{ error }}]</span>
+      				{% endfor %}
+      				{{ form.new_submit(size=32) }}<br>
+      				{% for error in form.new_submit.errors %}
+      				<span style="color: red;">[{{ error }}]</span>
+      				{% endfor %}
+      		</p>
+      </form>
+      <!-- <p align="center"><a href="#" role="button" class="btn btn-success">Create New List</a></p> -->
       <h5 align="center">Your Saved Lists</h5>
     	<p align="center">
         <table align="center">
+          {% if lists %}
+          {% for list in lists %}
+          <tr><td><u>{{list.list_name}}</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
+          {% endfor %}
+        {% else %}
           <tr>
             <td><u>My First Shopping List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
             <tr><td><u>Budget Friendly</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
             <tr><td><u>Dinner Party List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
+        {% endif %}
         </table>
 	    </p>
     </div>
-  <div class ="col-sm-8">
-    <h5 align="center">Current List</h5><br>
+  <div class ="col-sm-6">
+    <h5 align="center">Current List - {{current_user.current_list}}</h5><br>
     <p align="center">
-      <table align="center" class="table table-hover">
+      {{mylist}}
+      <!-- <table align="center" class="table table-hover">
         <tr>
           <th>Item</th>
         </tr>
         <tr>
-          <td>Apple</td>
+          <td>Apple</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
         </tr>
         <tr>
-          <td>Banana</td>
+          <td>Banana</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
         </tr>
         <tr>
-          <td>Cherries</td>
+          <td>Cherries</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
         </tr>
         <tr>
           <td>...</td>
         </tr>
-      </table>
+      </table> -->
     </div>
   </div>
 </div>

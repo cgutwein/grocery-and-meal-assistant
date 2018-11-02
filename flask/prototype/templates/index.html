@@ -10,72 +10,112 @@
 	<br />
     <form action="http://localhost:5000/results" method="post" enctype = "multipart/form-data">
         {{ form.hidden_tag() }}
-        <p align="center">
-            {{ form.userage.label }} {{ form.userage(size=1) }}<br>
-            {% for error in form.userage.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p align="center">
-            {{ form.userheight.label }} {{ form.userheight(size=1) }}<br>
-            {% for error in form.userheight.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p align="center">
-            {{ form.userweight.label }} {{ form.userweight(size=1) }}<br>
-            {% for error in form.userweight.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <div align="center">
-            {{ form.usergender.label }}<br>
-            {{ form.usergender }}<br>
-            {% for error in form.usergender.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.usergym.label }}<br>
-            {{ form.usergym }}<br>
-            {% for error in form.usergym.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.usergoals.label }}<br>
-            {{ form.usergoals }}<br>
-            {% for error in form.usergoals.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.userspecs.label }}<br>
-            {{ form.userspecs }}<br>
-            {% for error in form.userspecs.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.usercuisine.label }}<br>
-            {{ form.usercuisine }}<br>
-            {% for error in form.usercuisine.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.usercomplex.label }}<br>
-            {{ form.usercomplex }}<br>
-            {% for error in form.usercomplex.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </div>
-        <div align="center">
-            {{ form.usermeal.label }}<br>
-            {{ form.usermeal }}<br>
-            {% for error in form.usermeal.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+        <div class="container">
+        	<div class="row">
+        		<div class="col-sm-4">
+            <p align="center">
+                {{ form.userage.label }} {{ form.userage(size=1) }}<br>
+                {% for error in form.userage.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p align="center">
+                {{ form.userheight.label }} {{ form.userheight(size=1) }}<br>
+                {% for error in form.userheight.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p align="center">
+                {{ form.userweight.label }} {{ form.userweight(size=1) }}<br>
+                {% for error in form.userweight.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <div align="center">
+                {{ form.usergender.label }}<br>
+                {% for subfield in form.usergender %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr><br>
+                {% endfor %}
+                {% for error in form.usergender.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            </div>
+            <div class="col-sm-4">
+            <div align="center">
+                {{ form.usergym.label }}<br>
+                {% for subfield in form.usergym %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr><br>
+                {% endfor %}
+                {% for error in form.usergym.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div align="center">
+                {{ form.usergoals.label }}<br>
+                {% for subfield in form.usergoals %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr><br>
+                {% endfor %}
+                {% for error in form.usergoals.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div align="center">
+                {{ form.userspecs.label }}<br>
+                {% for subfield in form.userspecs %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr><br>
+                {% endfor %}
+                {% for error in form.userspecs.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            </div>
+            <div class="col-sm-4">
+              <div align="center">
+                  {{ form.usercuisine.label }}<br>
+                  {{ form.usercuisine }}<br>
+                  {% for error in form.usercuisine.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+              </div>
+              <div align="center">
+                  {{ form.usercomplex.label }}<br>
+                  {% for subfield in form.usercomplex %}
+                  <tr>
+                      <td>{{ subfield }}</td>
+                      <td>{{ subfield.label }}</td>
+                  </tr><br>
+                  {% endfor %}
+                  {% for error in form.usercomplex.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+              </div>
+              <div align="center">
+                  {{ form.usermeal.label }}<br>
+                  {% for subfield in form.usermeal %}
+                  <tr>
+                      <td>{{ subfield }}</td>
+                      <td>{{ subfield.label }}</td>
+                  </tr><br>
+                  {% endfor %}
+                  {% for error in form.usermeal.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
         <div align="center">
             {{ form.userrecipe.label }}<br>

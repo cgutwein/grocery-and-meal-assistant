@@ -19,7 +19,8 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    lists = db.relationship('Grocery', backref='shopper', lazy='dynamic')
+    current_list = db.Column(db.String(100))
+    listdb = db.relationship('Listdb', backref='shopper', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -29,6 +30,15 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+class Listdb(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    list_name = db.Column(db.String(100))
+    file_name = db.Column(db.String(300))
+
+    def __repr__(self):
+        return '<Listdb {}>'.format(self.list_name)
 
 ## If we were using Relational DB, may want to construct Grocery lists as db
 class Grocery(db.Model):
@@ -70,7 +80,12 @@ class GroceryList:
 ## Table for ingredients from search
 class IngrTable(Table):
     name = Col('Ingredient')
-    but_add = ButtonCol('+', 'grocery_list_gen')
+    but_add = ButtonCol('+', 'add_food_item', url_kwargs = dict(food_item = 'name'))
+
+## Table for ingredients from search
+class ListTable(Table):
+    name = Col('Ingredient')
+    but_add = ButtonCol('-', 'del_food_item', url_kwargs = dict(food_item = 'name'))
 
 ## Another for ingredients
 class Ingr(object):

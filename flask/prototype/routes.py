@@ -1,9 +1,9 @@
 from prototype import app
 from shutil import copyfile
 from flask import render_template, flash, redirect, request
-from prototype.forms import LoginForm, RegistrationForm, PreferencesForm, GrocerySearchForm
+from prototype.forms import LoginForm, RegistrationForm, PreferencesForm, GrocerySearchForm, GroceryListForm
 from flask_login import current_user, login_user, logout_user, login_required
-from prototype.models import User
+from prototype.models import User, Listdb, GroceryList
 from werkzeug.urls import url_parse
 from prototype import db
 from werkzeug import secure_filename
@@ -95,8 +95,8 @@ def grocery_list_gen():
     if current_user.is_authenticated:
         form = GrocerySearchForm()
         if form.validate_on_submit():
-            ingredients = pd.read_csv('../python/files/ingr_list.csv')
-            series = ingredients['ingredient']
+            ingredients = pd.read_csv('../python/data/ingredients_short.csv')
+            series = ingredients['stem']
             table_string = grocery.ingr_search(form.query.data, series)
             if table_string == []:
                 table_string = "No results generated from search.Try again."
@@ -108,6 +108,37 @@ def grocery_list_gen():
 @app.route('/grocery_list', methods=['GET', 'POST'])
 def grocery_list():
     if current_user.is_authenticated:
-        return render_template('grocery_list.html', title='Grocery List - Current')
+        form = GroceryListForm()
+        if form.validate_on_submit():
+            ob_list = GroceryList(name=form.new_name.data, user_id=current_user.username)
+            list = Listdb(shopper=current_user, list_name = form.new_name.data, file_name=ob_list.filename)
+            current_user.current_list = list.list_name
+            db.session.add(list)
+            db.session.commit()
+            ob_list.save_list()
+            return redirect('/grocery_list')
+        lists = Listdb.query.all()
+        q = Listdb.query.filter(Listdb.list_name == current_user.current_list).filter(Listdb.user_id == current_user.id)
+        if current_user.current_list != None:
+            mylist = grocery.load_list_table(q[0].file_name)
+        else:
+            mylist = "You need to add items to your list."
+        return render_template('grocery_list.html', title='Grocery List - Current', form=form, lists=lists, mylist=mylist)
     else:
         return redirect('/index')
+
+@app.route('/add_item/<string:food_item>', methods=['POST'])
+def add_food_item(food_item):
+    q = Listdb.query.filter(Listdb.list_name == current_user.current_list).filter(Listdb.user_id == current_user.id)
+    ob_list = grocery.load_list(q[0].file_name)
+    ob_list.add_item(food_item)
+    ob_list.save_list()
+    return redirect('/grocery_list')
+
+@app.route('/del_item/<string:food_item>', methods=['POST'])
+def del_food_item(food_item):
+    q = Listdb.query.filter(Listdb.list_name == current_user.current_list).filter(Listdb.user_id == current_user.id)
+    ob_list = grocery.load_list(q[0].file_name)
+    ob_list.delete_item(food_item)
+    ob_list.save_list()
+    return redirect('/grocery_list')
