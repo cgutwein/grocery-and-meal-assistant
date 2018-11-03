@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<h1 align="center">Recipe Generation</h1>
+			<p align="center">Use the selection options below and then click 'Generate Recipes' to receive a personalized list of recommended receipes from the Recepticon engine.</p>
+			<form action="" method="post" novalidate>
+      		{{ form.hidden_tag() }}
+      		<p align="center">
+      				{{ form.dof(size=32) }}
+      				{% for error in form.dof.errors %}
+      				<span style="color: red;">[{{ error }}]</span>
+      				{% endfor %}
+      				{{ form.submit(size=32) }}<br>
+      				{% for error in form.submit.errors %}
+      				<span style="color: red;">[{{ error }}]</span>
+      				{% endfor %}
+      		</p>
+      </form>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+		<p align="center">
+		{% if recs %}
+		{{recs}}
+		{% else %}
+		{% endif %}
+		</p>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+</div>
+
+
+{% endblock %}

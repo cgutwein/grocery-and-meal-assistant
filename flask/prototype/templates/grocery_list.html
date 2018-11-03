@@ -31,10 +31,8 @@
       <h5 align="center">Your Saved Lists</h5>
     	<p align="center">
         <table align="center">
-          {% if lists %}
-          {% for list in lists %}
-          <tr><td><u>{{list.list_name}}</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
-          {% endfor %}
+          {% if lists_table %}
+          {{lists_table}}
         {% else %}
           <tr>
             <td><u>My First Shopping List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
@@ -48,23 +46,6 @@
     <h5 align="center">Current List - {{current_user.current_list}}</h5><br>
     <p align="center">
       {{mylist}}
-      <!-- <table align="center" class="table table-hover">
-        <tr>
-          <th>Item</th>
-        </tr>
-        <tr>
-          <td>Apple</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
-        </tr>
-        <tr>
-          <td>Banana</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
-        </tr>
-        <tr>
-          <td>Cherries</td><td><a href="#" role="button" class="btn btn-link">Substitute</a></td><td><a href="#" role="button" class="btn btn-link">Remove</a></td>
-        </tr>
-        <tr>
-          <td>...</td>
-        </tr>
-      </table> -->
     </div>
   </div>
 </div>

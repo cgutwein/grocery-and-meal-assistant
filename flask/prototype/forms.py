@@ -49,3 +49,7 @@ class GroceryListForm(FlaskForm):
 class GrocerySearchForm(FlaskForm):
     query = StringField('Search groceries...', validators=[DataRequired()])
     submit = SubmitField('Go!')
+
+class RecipeGenForm(FlaskForm):
+    dof = IntegerField('How many allowable subsitutions?', default=3, validators=[DataRequired()])
+    submit = SubmitField('Give me recipes!')
