@@ -105,3 +105,22 @@ class GrocListTableItem(object):
         self.name = name
         self.but_load = but_load
         self.but_del = but_del
+
+## Table for all user's grocery lists
+class RecListTable(Table):
+    name = Col('RecName')
+    kcal = Col('Calories')
+    fat = Col('Fat (g)')
+    carb = Col('Carbohydrates (g)')
+    protein = Col('Protein (g)')
+    prods = Col('Ingredients to Add to List')
+
+## Another for ingredients
+class RecListTableItem(object):
+    def __init__(self, name, kcal, fat, carb, protein, prods):
+        self.name = name
+        self.kcal = kcal
+        self.fat = fat
+        self.carb = carb
+        self.protein = protein
+        self.prods = prods

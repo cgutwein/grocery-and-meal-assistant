@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from prototype.models import RecListTable, RecListTableItem
 
 # def products_to_add(options, i):
 #     s=options.loc[i][needed]
@@ -95,4 +96,8 @@ def return_recipes(calories_max=800,
     recommendation['# of products to add']=pd.Series([len([y for y in recommendation.loc[i]['products to add'].split(",")
                                                        if y not in non_ingredients]) for i in ind], index=ind)
 
-    return recommendation.to_html
+    rec_list = []
+    n = len(recommendation)
+    for i in range(n):
+        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add']))
+    return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-striped'}))
