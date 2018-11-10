@@ -94,14 +94,20 @@ def results():
 def grocery_list_gen():
     if current_user.is_authenticated:
         form = GrocerySearchForm()
+        lists = Listdb.query.filter(Listdb.user_id == current_user.id)
+        q = lists.filter(Listdb.list_name == current_user.current_list)
+        if current_user.current_list != None:
+            mylist = grocery.load_list_table(q[0].file_name)
+        else:
+            mylist = "You need to add items to your list."
         if form.validate_on_submit():
             ingredients = pd.read_csv('../python/data/ingredients_short.csv')
             series = ingredients['stem']
             table_string = grocery.ingr_search(form.query.data, series)
             if table_string == []:
                 table_string = "No results generated from search.Try again."
-            return render_template('grocery.html', title='Grocery List - Current', form=form, table_string=table_string)
-        return render_template('grocery.html', title='Grocery List - Current', form=form)
+            return render_template('grocery.html', title='Grocery List - Current', form=form, table_string=table_string, mylist=mylist)
+        return render_template('grocery.html', title='Grocery List - Current', form=form, mylist=mylist)
     else:
         return redirect('/index')
 
@@ -109,6 +115,13 @@ def grocery_list_gen():
 def grocery_list():
     if current_user.is_authenticated:
         form = GroceryListForm()
+        lists = Listdb.query.filter(Listdb.user_id == current_user.id)
+        lists_table = grocery.load_groc_list(lists)
+        q = lists.filter(Listdb.list_name == current_user.current_list)
+        if current_user.current_list != None:
+            mylist = grocery.load_list_table(q[0].file_name)
+        else:
+            mylist = "You need to add items to your list."
         if form.validate_on_submit():
             ob_list = GroceryList(name=form.new_name.data, user_id=current_user.username)
             list = Listdb(shopper=current_user, list_name = form.new_name.data, file_name=ob_list.filename)
@@ -117,13 +130,6 @@ def grocery_list():
             db.session.commit()
             ob_list.save_list()
             return redirect('/grocery_list')
-        lists = Listdb.query.filter(Listdb.user_id == current_user.id)
-        lists_table = grocery.load_groc_list(lists)
-        q = lists.filter(Listdb.list_name == current_user.current_list)
-        if current_user.current_list != None:
-            mylist = grocery.load_list_table(q[0].file_name)
-        else:
-            mylist = "You need to add items to your list."
         return render_template('grocery_list.html', title='Grocery List - Current', form=form, lists_table=lists_table, mylist=mylist)
     else:
         return redirect('/index')
@@ -158,7 +164,7 @@ def del_food_item(food_item):
     ob_list = grocery.load_list(q[0].file_name)
     ob_list.delete_item(food_item)
     ob_list.save_list()
-    return redirect('/grocery_list')
+    return redirect('/grocery')
 
 @app.route('/load_list/<string:f_list>', methods=['POST'])
 def f_load_list(f_list):

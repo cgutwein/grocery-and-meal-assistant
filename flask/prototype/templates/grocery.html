@@ -20,8 +20,6 @@
 				{% endfor %}
 		</p>
 </form>
-</div>
-<div class ="col-sm-6">
 <h3 align="center">Search Results</h3><br>
 <div class="container">
 {% if table_string %}
@@ -29,6 +27,12 @@
 {% else %}
 <p align="center">No results generated from search.Try again.</p>
 {% endif %}
+</div>
+</div>
+<div class ="col-sm-6">
+	<h5 align="center">Current List - {{current_user.current_list}}</h5><br>
+	<p align="center">
+		{{mylist}}</p>
 </div>
 </div>
 </div>
