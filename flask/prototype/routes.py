@@ -7,6 +7,7 @@ from prototype.models import User, Listdb, GroceryList
 from werkzeug.urls import url_parse
 from prototype import db
 from werkzeug import secure_filename
+from sqlalchemy import exists
 import tablib
 import os
 from prototype.custom_functions import grocery, recipe
@@ -115,13 +116,15 @@ def grocery_list_gen():
 def grocery_list():
     if current_user.is_authenticated:
         form = GroceryListForm()
-        lists = Listdb.query.filter(Listdb.user_id == current_user.id)
-        lists_table = grocery.load_groc_list(lists)
-        q = lists.filter(Listdb.list_name == current_user.current_list)
-        if current_user.current_list != None:
-            mylist = grocery.load_list_table(q[0].file_name)
-        else:
-            mylist = "You need to add items to your list."
+        lists_table = "You do not have any saved lists."
+        mylist = "You need to add items to the list."
+        if db.session.query(exists().where(Listdb.user_id == current_user.id)).scalar():
+            lists = Listdb.query.filter(Listdb.user_id == current_user.id)
+            lists_table = grocery.load_groc_list(lists)
+            if current_user.current_list != None:
+                q = lists.filter(Listdb.list_name == current_user.current_list)
+                if q:
+                    mylist = grocery.load_list_table(q[0].file_name)
         if form.validate_on_submit():
             ob_list = GroceryList(name=form.new_name.data, user_id=current_user.username)
             list = Listdb(shopper=current_user, list_name = form.new_name.data, file_name=ob_list.filename)
@@ -142,7 +145,8 @@ def recipes():
             q = Listdb.query.filter(Listdb.list_name == current_user.current_list).filter(Listdb.user_id == current_user.id)
             groceries = grocery.load_list(q[0].file_name).groc_list
             dof = form.dof.data
-            recs = recipe.return_recipes(n_additional_ingredients=dof, grocery=groceries)
+            meal_type = form.meal_type.data
+            recs = recipe.return_recipes(n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries)
             if recs == "":
                 recs = "No results generated from search.Try again."
             return render_template('recipes.html', title='Grocery List - Current', form=form, recs=recs)
@@ -175,11 +179,11 @@ def f_load_list(f_list):
 @app.route('/del_list/<string:f_list>', methods=['POST'])
 def f_del_list(f_list):
     q = Listdb.query.filter(Listdb.list_name == f_list).filter(Listdb.user_id == current_user.id)
-    import os
     if os.path.exists(q[0].file_name):
       os.remove(q[0].file_name)
     else:
       print("The file does not exist")
     q.delete()
     db.session.commit()
+    current_user.current_list = None
     return redirect('/grocery_list')

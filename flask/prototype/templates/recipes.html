@@ -10,10 +10,21 @@
 			<form action="" method="post" novalidate>
       		{{ form.hidden_tag() }}
       		<p align="center">
+							{{ form.meal_type.label }}
+							{% for subfield in form.meal_type %}
+							<tr>
+									<td>{{ subfield }}</td>
+									<td>{{ subfield.label }}</td>
+							</tr>
+							{% endfor %}
+							{% for error in form.meal_type.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+							{% endfor %}<br>
+						  {{ form.dof.label }}
       				{{ form.dof(size=32) }}
       				{% for error in form.dof.errors %}
       				<span style="color: red;">[{{ error }}]</span>
-      				{% endfor %}
+      				{% endfor %}<br>
       				{{ form.submit(size=32) }}<br>
       				{% for error in form.submit.errors %}
       				<span style="color: red;">[{{ error }}]</span>
