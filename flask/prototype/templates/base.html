@@ -26,10 +26,10 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/index">Account</a>
+            <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recipes">Recipes</a>
+            <a class="nav-link" href="/recipes">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/grocery_list">Grocery Lists</a>

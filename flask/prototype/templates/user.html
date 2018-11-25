@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <table>
+            <tr valign="top">
+              <td><img src="{{ user.avatar(128) }}"></td>
+              <td>
+                <h1>User: {{ user.username }}</h1>
+                {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+                {% if user == current_user %}<p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>{% endif %}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class='container'>
+      <div class='row'>
+        <div class="col-sm-5">
+          <table class='table table-striped' style='margin-left:10px'>
+            <tr><td>Age</td><td>{{user.age}}</td></tr>
+            <tr><td>Height</td><td>{{user.height}}</td></tr>
+            <tr><td>Weight</td><td>{{user.weight}}</td></tr>
+            <tr><td>Gender</td><td>{{user.gender}}</td></tr>
+            <tr><td>Workout Frequency</td><td>{{user.gym}}</td></tr>
+            <tr><td>Exercise Goals</td><td>{{user.goals}}</td></tr>
+            <tr><td>Diet</td><td>{{user.restrictions}}</td></tr>
+            <tr><td>Cuisine</td><td>{{user.cuisine}}</td></tr>
+            <tr><td>Preferred Meal Complexity</td><td>{{user.complexity}}</td></tr>
+            <tr><td>Daily Calorie Target</td><td>{{user.daily_cal}}</td></tr>
+            <tr><td>Protein Target</td><td>{{user.protein}}</td></tr>
+            <tr><td>Fat Target</td><td>{{user.fat}}</td></tr>
+            <tr><td>Carbohydrates Target</td><td>{{user.carb}}</td></tr>
+          </table>
+        </div>
+        <div class='col-sm-7'>
+          Placeholder for small data vis.
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

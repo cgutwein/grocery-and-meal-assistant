@@ -12,6 +12,13 @@ import tablib
 import os
 from prototype.custom_functions import grocery, recipe
 import pandas as pd
+from datetime import datetime
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 @app.route('/')
 @app.route('/home')
@@ -29,7 +36,6 @@ def index():
         restrictions = form.userspecs.data
         cuisine = form.usercuisine.data
         complexity = form.usercomplex.data
-        day_meal = form.usermeal.data
         recipe_file = form.userrecipe.data
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -69,10 +75,11 @@ def register():
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
+        user.list_initialize()
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect('login')
+        return redirect('edit_profile')
     return render_template('register.html', title='Register', form=form)
 
 def mycopy(fname):
@@ -146,7 +153,7 @@ def recipes():
             groceries = grocery.load_list(q[0].file_name).groc_list
             dof = form.dof.data
             meal_type = form.meal_type.data
-            recs = recipe.return_recipes(n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries)
+            recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries)
             if recs == "":
                 recs = "No results generated from search.Try again."
             return render_template('recipes.html', title='Grocery List - Current', form=form, recs=recs)
@@ -187,3 +194,46 @@ def f_del_list(f_list):
     db.session.commit()
     current_user.current_list = None
     return redirect('/grocery_list')
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    #### fill form in here
+    return render_template('user.html', user=user)
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form = PreferencesForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.age = form.userage.data
+        current_user.height = form.userheight.data
+        current_user.weight = form.userweight.data
+        current_user.gender = form.usergender.data
+        current_user.gym = int(form.usergym.data)
+        current_user.goals = int(form.usergoals.data)
+        current_user.restrictions = form.userspecs.data
+        current_user.cuisine = str(form.usercuisine.data)
+        current_user.complexity = int(form.usercomplex.data)
+        current_user.recipe_file = form.userrecipe.data
+        current_user.about_me = form.about_me.data
+        current_user.nutrigen()
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect('/edit_profile')
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+        form.userage.data = current_user.age
+        form.userheight.data = current_user.height
+        form.userweight.data = current_user.weight
+        form.usergender.data = current_user.gender
+        form.usergym.data = str(current_user.gym)
+        form.usergoals.data = str(current_user.goals)
+        form.userspecs.data = current_user.restrictions
+        form.usercuisine.data = current_user.cuisine
+        form.usercomplex.data = str(current_user.complexity)
+        current_user.recipe_file = form.userrecipe.data
+    return render_template('edit_profile.html', title='Edit Profile', form=form)

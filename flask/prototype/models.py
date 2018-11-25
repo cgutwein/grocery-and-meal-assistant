@@ -1,14 +1,17 @@
 from prototype import db, login
+from prototype.custom_functions import nutrition
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask_table import Table, Col, ButtonCol
+from sqlalchemy import types
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import _pickle as pickle
 import uuid
 import random
+from hashlib import md5
 
 @login.user_loader
 def load_user(id):
@@ -21,6 +24,22 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     current_list = db.Column(db.String(100))
     listdb = db.relationship('Listdb', backref='shopper', lazy='dynamic')
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    age = db.Column(db.Integer)
+    height = db.Column(db.Integer)
+    weight = db.Column(db.Integer)
+    gender = db.Column(db.String(1))
+    gym = db.Column(db.Integer)
+    goals = db.Column(db.Integer)
+    restrictions = db.Column(db.String(10))
+    cuisine = db.Column(db.String(200))
+    complexity = db.Column(db.Integer)
+    daily_cal = db.Column(db.Integer)
+    protein = db.Column(db.Integer)
+    fat = db.Column(db.Integer)
+    carb = db.Column(db.Integer)
+    scores_fn = db.Column(db.String)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -30,6 +49,20 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self,size):
+        digest=md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://gravatar.com/avatar/{}?d=identicon&s={}'.format(digest,size)
+
+    def nutrigen(self):
+        self.daily_cal = nutrition.calc_cal(self.weight, self.height, self.age, self.gender, self.gym, self.goals)
+        self.protein, self.fat, self.carb = nutrition.calc_macros(self.daily_cal, self.weight, self.goals)
+
+    def list_initialize(self):
+        self.scores_fn = nutrition.list_gen()
+
+
+
 
 class Listdb(db.Model):
     id = db.Column(db.Integer, primary_key=True)

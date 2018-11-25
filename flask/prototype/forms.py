@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, RadioField, SelectMultipleField, FileField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, RadioField, SelectMultipleField, FileField, TextAreaField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from prototype.models import User
 
 class LoginForm(FlaskForm):
@@ -28,18 +28,19 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 class PreferencesForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
     userage = IntegerField('Enter your age (years)', default=30, validators=[DataRequired()])
     userheight = IntegerField('Enter your height (in)', default=65 , validators=[DataRequired()])
     userweight = IntegerField('Enter your weight (lbs)', default=140, validators=[DataRequired()])
     usergender = RadioField('Enter your gender', default='f', choices=[('m', 'Male'), ('f', 'Female')], validators=[DataRequired()])
-    usergym = RadioField('How often do you exercise?', default='l', choices=[('l', 'Less than twice a week'), ('m', 'Less than four times a week'), ('h', 'Four or more times a week')], validators=[DataRequired()])
-    usergoals = RadioField('What are your nutritional goals?', default='l', choices=[('l', 'Weight loss'), ('g', 'Mass gain'), ('n', 'Already perfect')], validators=[DataRequired()])
+    usergym = RadioField('How often do you exercise?', default='0', choices=[('0', 'Never'),('1', 'Less than twice a week'), ('2', 'Less than four times a week'), ('3', 'Four or more times a week')], validators=[DataRequired()])
+    usergoals = RadioField('What are your nutritional goals?', default='0', choices=[('0', 'Weight loss'), ('1', 'Mass gain'), ('2', 'Already perfect')], validators=[DataRequired()])
     userspecs = RadioField('Do you have dietary restrictions?', default='ve', choices=[('ve', 'Vegan'), ('vg', 'Vegetarian'), ('n', 'None')], validators=[DataRequired()])
-    usercuisine = SelectMultipleField('Select your preferred cuisine(s)?', default='all', choices=[('all', 'ALL'),('mex', 'mexican'),('fre', 'french'),('iri', 'irish'),('ita', 'italian'),('chi', 'chinese'),('sus', 'southern_us'),('tha', 'thai'),('kor', 'korean'),('mor', 'moroccan'),('spa', 'spanish'),('gre', 'greek'),('bri', 'british'),('ind', 'indian'),('vie', 'vietnamese'),('jam', 'jamaican'),('jap', 'japanese'),('caj', 'cajun_creole'),('rus', 'russian'),('bra', 'brazilian'),('fil', 'filipino')], validators=[DataRequired()])
-    usercomplex = RadioField('Select preferred cooking complexity', default='l', choices=[('l', 'Low'), ('m', 'Medium'), ('h', 'High')], validators=[DataRequired()])
-    usermeal = RadioField('Select the meal of the day', default='b', choices=[('b', 'Breakfast'), ('l', 'Lunch'), ('d', 'dinner')], validators=[DataRequired()])
-    userrecipe = FileField('Upload Recipe', validators=[DataRequired()])
-    submit = SubmitField('Give me recipes!!!')
+    usercuisine = SelectMultipleField('Select your preferred cuisine(s)?', default='all', choices=[('all', 'ALL'),('mexican', 'mexican'),('french', 'french'),('irish', 'irish'),('italian', 'italian'),('chinese', 'chinese'),('southern_us', 'southern_us'),('thai', 'thai'),('korean', 'korean'),('moroccan', 'moroccan'),('spanish', 'spanish'),('greek', 'greek'),('british', 'british'),('indian', 'indian'),('vietnamese', 'vietnamese'),('jamaican', 'jamaican'),('japanese', 'japanese'),('cajun_creole', 'cajun_creole'),('russian', 'russian'),('brazilian', 'brazilian'),('filipino', 'filipino')], validators=[DataRequired()])
+    usercomplex = RadioField('Select preferred cooking complexity', default='1', choices=[('0', 'Low'), ('1', 'Medium'), ('2', 'High')], validators=[DataRequired()])
+    userrecipe = FileField('Upload Recipe')
+    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Submit changes.')
 
 class GroceryListForm(FlaskForm):
     load = SubmitField('Load Grocery List')
@@ -51,6 +52,6 @@ class GrocerySearchForm(FlaskForm):
     submit = SubmitField('Go!')
 
 class RecipeGenForm(FlaskForm):
-    meal_type = RadioField('What type of meal are you looking for?', default='d', choices=[('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner')], validators=[DataRequired()])
+    meal_type = RadioField('What type of meal are you looking for?', default='dinner', choices=[('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner'), ('dessert', 'Dessert'), ('drink', 'Drink')], validators=[DataRequired()])
     dof = IntegerField('How many allowable subsitutions?', default=3, validators=[DataRequired()])
     submit = SubmitField('Give me recipes!')

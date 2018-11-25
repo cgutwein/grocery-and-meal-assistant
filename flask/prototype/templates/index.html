@@ -102,18 +102,6 @@
                   <span style="color: red;">[{{ error }}]</span>
                   {% endfor %}
               </div>
-              <div align="center">
-                  {{ form.usermeal.label }}<br>
-                  {% for subfield in form.usermeal %}
-                  <tr>
-                      <td>{{ subfield }}</td>
-                      <td>{{ subfield.label }}</td>
-                  </tr><br>
-                  {% endfor %}
-                  {% for error in form.usermeal.errors %}
-                  <span style="color: red;">[{{ error }}]</span>
-                  {% endfor %}
-              </div>
             </div>
           </div>
         </div>

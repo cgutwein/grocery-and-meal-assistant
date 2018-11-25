@@ -1,23 +1,49 @@
 import pandas as pd
 import numpy as np
 from prototype.models import RecListTable, RecListTableItem
+from sklearn.metrics.pairwise import cosine_similarity
+import ast
 
 # def products_to_add(options, i):
 #     s=options.loc[i][needed]
 #     return ', '.join(list(s[s==1].index))
 
+def score_nutrition(x, nutr_values):
+    # less protein - penalized, coefficient 2
+    # more carbs than recommended - penalized, coefficient 2
+    # more fat than recommended - penalized, coefficient 1
 
-def return_recipes(calories_max=800,
-                   calories_min=500,
-                   protein_min=25,
+    penalty=-2*(min(0, nutr_values['protein']-x['protein']))+\
+    2*(max(0, nutr_values['carbs']-x['carbs']))+max(0, nutr_values['fats']-x['fats'])
+
+    return (penalty)
+
+def score_preference(i, user_score):
+    temp_data=data.drop(non_ingredients, axis=1)
+    weighted_score=np.mean([cosine_similarity(np.asarray(temp_data.loc[i].reshape(1, -1)),
+                                              np.asarray(temp_data.loc[key]).reshape(1, -1))*user_score[key]
+                            for key in user_score.keys()])
+    return (weighted_score)
+
+def return_recipes(calories=2500,
+                   protein=150,
                    meal_type='lunch',
                    cuisine='non_specified',
-                   complexity='easy',
+                   complexity=1,
                    n_additional_ingredients=4,
                    grocery=[]):
 ###############
 ################
 ################
+    complexity_dict = {0:'easy', 1:'medium', 2:'hard'}
+    complexity = complexity_dict[complexity]
+    calories_max = calories / 3
+    calories_min = calories / 10
+
+    protein_max = protein / 3
+    protein_min = protein / 10
+
+    cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
     data=pd.read_csv('../python/data/data.csv')
     data.drop('Unnamed: 0', axis=1, inplace=True)
@@ -66,10 +92,10 @@ def return_recipes(calories_max=800,
                        (data.calories<calories_max)&
                        (data.calories>calories_min)&
                        (data.protein>protein_min)&
-                       (data.complexity=='easy')
+                       (data.complexity==complexity)
                       ]
-    if cuisine!='non_specified':
-        options=options[options.cuisine==cuisine]
+    if 'all' not in cuisine:
+        options=options[options.cuisine.isin(cuisine)]
 
     #filter based on grocery
 
@@ -96,8 +122,13 @@ def return_recipes(calories_max=800,
     recommendation['# of products to add']=pd.Series([len([y for y in recommendation.loc[i]['products to add'].split(",")
                                                        if y not in non_ingredients]) for i in ind], index=ind)
 
+    # recommendation['nutrition penalty']=pd.Series([score_nutrition(result.loc[i], nutr_values) for i in recommendation.index], index=recommendation.index)
+    #
+    # recommendation['user score']=pd.Series([score_preference(i, user_score) for i in recommendation.index], index=recommendation.index)
     rec_list = []
     n = len(recommendation)
+
+
     for i in range(n):
         rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add']))
     return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-striped'}))
