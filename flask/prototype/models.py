@@ -52,7 +52,7 @@ class User(UserMixin, db.Model):
 
     def avatar(self,size):
         digest=md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://gravatar.com/avatar/{}?d=identicon&s={}'.format(digest,size)
+        return 'https://gravatar.com/avatar/{}?d=retro&s={}'.format(digest,size)
 
     def nutrigen(self):
         self.daily_cal = nutrition.calc_cal(self.weight, self.height, self.age, self.gender, self.gym, self.goals)
@@ -147,13 +147,15 @@ class RecListTable(Table):
     carb = Col('Carbohydrates (g)')
     protein = Col('Protein (g)')
     prods = Col('Ingredients to Add to List')
+    nutScore = Col('Nutrition Match')
 
 ## Another for ingredients
 class RecListTableItem(object):
-    def __init__(self, name, kcal, fat, carb, protein, prods):
+    def __init__(self, name, kcal, fat, carb, protein, prods, nutScore):
         self.name = name
         self.kcal = kcal
         self.fat = fat
         self.carb = carb
         self.protein = protein
         self.prods = prods
+        self.nutScore = nutScore

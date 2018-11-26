@@ -52,9 +52,8 @@ def calc_macros(daily_cal, weight, goal):
     return int(p),int(f),int(c)
 
 def list_gen():
-    data = data=pd.read_csv('../python/data/data.csv')
-    n = len(data)
-    df = pd.DataFrame(data = {'scores':np.repeat(3,len(data)), 'man': np.repeat(0,len(data))})
+    n = 20111
+    df = pd.DataFrame(data = {'scores':np.repeat(3,n), 'man': np.repeat(0,n)})
     filename = 'user_scores/' + uuid.uuid4().hex + '.pkl'
     with open(filename, 'wb') as output:  # Overwrites any existing file.
         pickle.dump(df, output, -1)
