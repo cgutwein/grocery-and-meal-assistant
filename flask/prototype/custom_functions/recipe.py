@@ -4,17 +4,18 @@ from prototype.models import RecListTable, RecListTableItem
 from sklearn.metrics.pairwise import cosine_similarity
 import ast
 
+global_data = pd.read_csv('../python/data/data.csv')
 # def products_to_add(options, i):
 #     s=options.loc[i][needed]
 #     return ', '.join(list(s[s==1].index))
 
-def score_nutrition(x, nutr_values):
+def score_nutrition(x, u_protein, u_fat, u_carb):
     # less protein - penalized, coefficient 2
     # more carbs than recommended - penalized, coefficient 2
     # more fat than recommended - penalized, coefficient 1
 
-    penalty=-2*(min(0, nutr_values['protein']-x['protein']))+\
-    2*(max(0, nutr_values['carbs']-x['carbs']))+max(0, nutr_values['fats']-x['fats'])
+    penalty=-2*(min(0, u_protein-x['protein']))+\
+    2*(max(0, u_carb-x['carbs']))+max(0, u_fat-x['fats'])
 
     return (penalty)
 
@@ -27,6 +28,8 @@ def score_preference(i, user_score):
 
 def return_recipes(calories=2500,
                    protein=150,
+                   fat=70,
+                   carb=150,
                    meal_type='lunch',
                    cuisine='non_specified',
                    complexity=1,
@@ -40,12 +43,16 @@ def return_recipes(calories=2500,
     calories_max = calories / 3
     calories_min = calories / 10
 
+    ## reducing nutritional values to per meal values
     protein_max = protein / 3
     protein_min = protein / 10
+    protein_meal = protein/4
+    carb_meal = carb/4
+    fat_meal = fat/4
 
     cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
-    data=pd.read_csv('../python/data/data.csv')
+    data=global_data
     data.drop('Unnamed: 0', axis=1, inplace=True)
     ingredients=pd.read_csv('../python/data/ingredients_short.csv')
     ingredients.drop('Unnamed: 0', axis=1, inplace=True)
@@ -122,7 +129,7 @@ def return_recipes(calories=2500,
     recommendation['# of products to add']=pd.Series([len([y for y in recommendation.loc[i]['products to add'].split(",")
                                                        if y not in non_ingredients]) for i in ind], index=ind)
 
-    # recommendation['nutrition penalty']=pd.Series([score_nutrition(result.loc[i], nutr_values) for i in recommendation.index], index=recommendation.index)
+    recommendation['nutrition penalty']=pd.Series([score_nutrition(recommendation.loc[i], protein_meal, fat_meal, carb_meal) for i in recommendation.index], index=recommendation.index)
     #
     # recommendation['user score']=pd.Series([score_preference(i, user_score) for i in recommendation.index], index=recommendation.index)
     rec_list = []
@@ -130,5 +137,5 @@ def return_recipes(calories=2500,
 
 
     for i in range(n):
-        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add']))
+        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add'], recommendation.iloc[i]['nutrition penalty']))
     return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-striped'}))
