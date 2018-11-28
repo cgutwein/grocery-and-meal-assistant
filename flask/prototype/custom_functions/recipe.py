@@ -5,6 +5,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 import ast
 
 global_data = pd.read_csv('../python/data/data.csv')
+global_data.drop('Unnamed: 0', axis=1, inplace=True)
+
+#################
+################# End of bloated data block
+#################
+
+# extend grocery for all available substitutes
 # def products_to_add(options, i):
 #     s=options.loc[i][needed]
 #     return ', '.join(list(s[s==1].index))
@@ -53,7 +60,6 @@ def return_recipes(calories=2500,
     cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
     data=global_data
-    data.drop('Unnamed: 0', axis=1, inplace=True)
     ingredients=pd.read_csv('../python/data/ingredients_short.csv')
     ingredients.drop('Unnamed: 0', axis=1, inplace=True)
 
@@ -70,11 +76,6 @@ def return_recipes(calories=2500,
     group=dict(zip(group_keys,
                 [list(ingredients[ingredients['substitute 1']==key]['stem']) for key in group_keys]))
     group_values=[y for x in group.values() for y in x]
-#################
-################# End of bloated data block
-#################
-
-    # extend grocery for all available substitutes
     ingredients_nongroup=[gr for gr in grocery if gr not in group_values]
     ingredients_group=list(set([ingredients[ingredients.stem==gr]['substitute 1'].values[0] for gr in grocery if gr in group_values]))
 
