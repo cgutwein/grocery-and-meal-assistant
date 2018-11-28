@@ -69,7 +69,7 @@ def return_recipes(calories=2500,
     garnish=['parsley', 'dried parsley', 'cilantro', 'cilantro leaves', 'dill',
              'celery leaves', 'chives', 'chocolate chips', 'sesame', 'black sesame seeds', 'sesame seeds']
     # separate ingredients from non-ingredients
-    non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity']
+    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'image', 'image_link']
     non_ingredients.extend(spices)
     group_keys=['pasta', 'mold cheese', 'soft cheese', 'brined cheese', 'medium cheese', 'hard cheese', 'cottage cheese', 'dry wine',
                 'liquer', 'white wine', 'red wine']
