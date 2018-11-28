@@ -59,8 +59,6 @@ def return_recipes(calories=2500,
 
     cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
-    #data = pd.read_csv('../python/data/data.csv')
-    #data.drop('Unnamed: 0', axis=1, inplace=True)
     data=global_data
     ingredients=pd.read_csv('../python/data/ingredients_short.csv')
     ingredients.drop('Unnamed: 0', axis=1, inplace=True)
@@ -104,7 +102,6 @@ def return_recipes(calories=2500,
                        (data.protein>protein_min)&
                        (data.complexity==complexity)
                       ]
-
     if 'all' not in cuisine:
         options=options[options.cuisine.isin(cuisine)]
 
@@ -112,7 +109,7 @@ def return_recipes(calories=2500,
 
     # drop columns with unused ingredients
     ingredients=options.drop(non_ingredients, axis=1).columns
-    #options.drop([x for x in ingredients if sum(options[x])==0], axis=1, inplace=True)
+    options.drop([x for x in ingredients if sum(options[x])==0], axis=1, inplace=True)
 
     #update ingredients
     ingredients=options.drop(non_ingredients, axis=1).columns
