@@ -139,10 +139,10 @@ def return_recipes(calories=2500,
 
     user_score={461:5, 1693:4, 400:5, 189:2, 2704:3, 4867:3, 5470:4, 159:3, 1588:4, 447:3, 26:2, 101:1}	
     # Filter the user_score dict to have only the items of the appropriate meal type
-    keys=list(filter(lambda x: data.loc[x].meal=="lunch/dinner", user_score.keys()))
+    keys=list(filter(lambda x: data.loc[x].meal==meal_type, user_score.keys()))
     temp_user_score=dict(zip(keys, [user_score[key] for key in keys]))
 
-    if len(user_score.keys())==0:
+    if len(temp_user_score.keys())==0:
         recommendation['user score']=pd.Series([0]*recommendation.shape[0], index=recommendation.index)
     else:
         recommendation['user score']=pd.Series([score_preference(i, temp_user_score, temp_data) for i in recommendation.index], index=recommendation.index)
