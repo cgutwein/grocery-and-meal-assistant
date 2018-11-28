@@ -26,8 +26,7 @@ def score_nutrition(x, u_protein, u_fat, u_carb):
 
     return (penalty)
 
-def score_preference(i, user_score):
-    temp_data=data.drop(non_ingredients, axis=1)
+def score_preference(i, user_score, temp_data):
     weighted_score=np.mean([cosine_similarity(np.asarray(temp_data.loc[i].reshape(1, -1)),
                                               np.asarray(temp_data.loc[key]).reshape(1, -1))*user_score[key]
                             for key in user_score.keys()])
@@ -41,7 +40,8 @@ def return_recipes(calories=2500,
                    cuisine='non_specified',
                    complexity=1,
                    n_additional_ingredients=4,
-                   grocery=[]):
+                   grocery=[],
+                   user_score={}):
 ###############
 ################
 ################
@@ -131,12 +131,26 @@ def return_recipes(calories=2500,
                                                        if y not in non_ingredients]) for i in ind], index=ind)
 
     recommendation['nutrition penalty']=pd.Series([score_nutrition(recommendation.loc[i], protein_meal, fat_meal, carb_meal) for i in recommendation.index], index=recommendation.index)
-    #
-    # recommendation['user score']=pd.Series([score_preference(i, user_score) for i in recommendation.index], index=recommendation.index)
+    
+    # Creation of temp_dataset for the user_score calculation
+
+    temp_data=data[data.meal==meal_type]
+    temp_data=temp_data.drop(non_ingredients, axis=1)
+
+    user_score={461:5, 1693:4, 400:5, 189:2, 2704:3, 4867:3, 5470:4, 159:3, 1588:4, 447:3, 26:2, 101:1}	
+    # Filter the user_score dict to have only the items of the appropriate meal type
+    keys=list(filter(lambda x: data.loc[x].meal=="lunch/dinner", user_score.keys()))
+    temp_user_score=dict(zip(keys, [user_score[key] for key in keys]))
+
+    if len(user_score.keys())==0:
+        recommendation['user score']=pd.Series([0]*recommendation.shape[0], index=recommendation.index)
+    else:
+        recommendation['user score']=pd.Series([score_preference(i, temp_user_score, temp_data) for i in recommendation.index], index=recommendation.index)
+    
+   # Create the output dataset    
     rec_list = []
     n = len(recommendation)
 
-
     for i in range(n):
-        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add'], recommendation.iloc[i]['nutrition penalty']))
+        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add'], recommendation.iloc[i]['nutrition penalty'], recommendation.iloc[i]['user score']))
     return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-striped'}))

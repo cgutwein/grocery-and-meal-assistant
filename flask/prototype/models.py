@@ -148,10 +148,11 @@ class RecListTable(Table):
     protein = Col('Protein (g)')
     prods = Col('Ingredients to Add to List')
     nutScore = Col('Nutrition Match')
+    user_score = Col('Preference Match')
 
 ## Another for ingredients
 class RecListTableItem(object):
-    def __init__(self, name, kcal, fat, carb, protein, prods, nutScore):
+    def __init__(self, name, kcal, fat, carb, protein, prods, nutScore, user_score):
         self.name = name
         self.kcal = kcal
         self.fat = fat
@@ -159,3 +160,4 @@ class RecListTableItem(object):
         self.protein = protein
         self.prods = prods
         self.nutScore = nutScore
+        self.user_score = user_score  
