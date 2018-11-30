@@ -25,10 +25,20 @@
       				{% for error in form.dof.errors %}
       				<span style="color: red;">[{{ error }}]</span>
       				{% endfor %}<br>
+                            {{ form.sorting_field.label }}
+							{% for subfield in form.sorting_field %}
+							<tr>
+									<td>{{ subfield }}</td>
+									<td>{{ subfield.label }}</td>
+							</tr>
+							{% endfor %}
+							{% for error in form.sorting_field.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+							{% endfor %}<br>
       				{{ form.submit(size=32) }}<br>
       				{% for error in form.submit.errors %}
       				<span style="color: red;">[{{ error }}]</span>
-      				{% endfor %}
+      				{% endfor %}<br>
       		</p>
       </form>
 		</div>
