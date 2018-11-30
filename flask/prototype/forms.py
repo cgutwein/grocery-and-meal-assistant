@@ -54,4 +54,5 @@ class GrocerySearchForm(FlaskForm):
 class RecipeGenForm(FlaskForm):
     meal_type = RadioField('What type of meal are you looking for?', default='dinner', choices=[('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner'), ('dessert', 'Dessert'), ('drink', 'Drink')], validators=[DataRequired()])
     dof = IntegerField('How many allowable subsitutions?', default=3, validators=[DataRequired()])
+    sorting_field = RadioField('Sort by', default='title', choices=[('title', 'RecName'), ('calories', 'Calories'), ('fats', 'Fat (g)'), ('carbs', 'Carbohydrates (g)'), ('protein', 'Protein (g)'), ('products to add', 'Ingredients to Add to List'), ('nutrition penalty', 'Nutrition Match'), ('user score', 'Preference Match')], validators=[DataRequired()])
     submit = SubmitField('Give me recipes!')
