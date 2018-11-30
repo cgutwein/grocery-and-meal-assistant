@@ -41,7 +41,8 @@ def return_recipes(calories=2500,
                    complexity=1,
                    n_additional_ingredients=4,
                    grocery=[],
-                   user_score={}):
+                   user_score={},
+                   sort_field = 'title'):
 ###############
 ################
 ################
@@ -150,7 +151,7 @@ def return_recipes(calories=2500,
    # Create the output dataset    
     rec_list = []
     n = len(recommendation)
-
+    rec_sorted = recommendation.sort_values(by=[sort_field])
     for i in range(n):
-        rec_list.append(RecListTableItem(recommendation.iloc[i]['title'],recommendation.iloc[i]['calories'],recommendation.iloc[i]['fats'],recommendation.iloc[i]['carbs'],recommendation.iloc[i]['protein'],recommendation.iloc[i]['products to add'], recommendation.iloc[i]['nutrition penalty'], recommendation.iloc[i]['user score']))
-    return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-striped'}))
+        rec_list.append(RecListTableItem(rec_sorted.iloc[i]['title'],rec_sorted.iloc[i]['calories'],rec_sorted.iloc[i]['fats'],rec_sorted.iloc[i]['carbs'],rec_sorted.iloc[i]['protein'],rec_sorted.iloc[i]['products to add'], rec_sorted.iloc[i]['nutrition penalty'], rec_sorted.iloc[i]['user score']))
+    return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-hover'}))
