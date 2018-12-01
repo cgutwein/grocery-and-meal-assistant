@@ -27,7 +27,7 @@ def score_nutrition(x, u_protein, u_fat, u_carb):
     return (penalty)
 
 def score_preference(i, user_score, temp_data):
-    weighted_score=np.mean([cosine_similarity(np.asarray(temp_data.loc[i].reshape(1, -1)),
+    weighted_score=np.mean([cosine_similarity(np.asarray(temp_data.loc[i]).reshape(1, -1),
                                               np.asarray(temp_data.loc[key]).reshape(1, -1))*user_score[key]
                             for key in user_score.keys()])
     return (weighted_score)
