@@ -26,6 +26,7 @@ def score_nutrition(x, u_protein, u_fat, u_carb):
 
     return (penalty)
 
+
 def score_preference(i, user_score, temp_data):
     weighted_score=np.mean([cosine_similarity(np.asarray(temp_data.loc[i]).reshape(1, -1),
                                               np.asarray(temp_data.loc[key]).reshape(1, -1))*user_score[key]
@@ -46,17 +47,25 @@ def return_recipes(calories=2500,
 ###############
 ################
 ################
-    complexity_dict = {0:'easy', 1:'medium', 2:'hard'}
-    complexity = complexity_dict[complexity]
-    calories_max = calories / 3
-    calories_min = calories / 10
+
+    ## desserts and drinks wouldnt have the calories limit, but would be sorted by their nutrition values 
+    calories_split={'breakfast': 0.2, 'lunch/dinner': 0.3, 'lunch': 0.3, 'dinner': 0.3, 'snack': 0.1}
+    
+    if meal_type in calories_split.keys():
+        calories_meal = calories*calories_split[meal_type]
+        calories_max = calories_meal*1.15
+        calories_min = calories_meal*0.85
+        if meal_type=='breakfast':
+            calories_min = calories_meal*0.7
 
     ## reducing nutritional values to per meal values
-    protein_max = protein / 3
-    protein_min = protein / 10
-    protein_meal = protein/4
-    carb_meal = carb/4
-    fat_meal = fat/4
+        protein_meal = protein*calories_split[meal_type]        
+        protein_min = protein_meal*0.85
+        if meal_type=='breakfast':
+            calories_min = calories_meal*0.7
+
+        carb_meal = carb*calories_split[meal_type]
+        fat_meal = fat*calories_split[meal_type]
 
     cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
@@ -70,7 +79,7 @@ def return_recipes(calories=2500,
     garnish=['parsley', 'dried parsley', 'cilantro', 'cilantro leaves', 'dill',
              'celery leaves', 'chives', 'chocolate chips', 'sesame', 'black sesame seeds', 'sesame seeds']
     # separate ingredients from non-ingredients
-    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'image', 'image_link']
+    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'recipe_text', 'image', 'image_link']
     non_ingredients.extend(spices)
     group_keys=['pasta', 'mold cheese', 'soft cheese', 'brined cheese', 'medium cheese', 'hard cheese', 'cottage cheese', 'dry wine',
                 'liquer', 'white wine', 'red wine']
@@ -97,15 +106,24 @@ def return_recipes(calories=2500,
     if meal_type in ['lunch', 'dinner']: meal_type='lunch/dinner'
 
     #filter basic parameters
-    options=data[(data.meal==meal_type)&
+
+    if meal_type in calories_split.keys():
+        options=data[(data.meal==meal_type)&
                        (data.calories<calories_max)&
                        (data.calories>calories_min)&
                        (data.protein>protein_min)&
-                       (data.complexity==complexity)
+                       (data.complexity<=complexity)
                       ]
+    
+    else:
+        options=data[(data.meal==meal_type)&
+                       (data.complexity<=complexity)]
+
     if 'all' not in cuisine:
         options=options[options.cuisine.isin(cuisine)]
 
+    
+    
     #filter based on grocery
 
     # drop columns with unused ingredients
@@ -119,7 +137,7 @@ def return_recipes(calories=2500,
 
     needed=[x for x in ingredients if x not in grocery]
 
-    # Keep only the recipes if the number of additional key ingredients doesnt exceed 3
+    # Keep only the recipes if the number of additional key ingredients doesnt exceed n
     sums=options[needed].sum(axis=1)
     ind=[x for x in sums.index if sums.loc[x]<=n_additional_ingredients]
     options=options.loc[ind]
@@ -130,9 +148,10 @@ def return_recipes(calories=2500,
 
     recommendation['# of products to add']=pd.Series([len([y for y in recommendation.loc[i]['products to add'].split(",")
                                                        if y not in non_ingredients]) for i in ind], index=ind)
-
-    recommendation['nutrition penalty']=pd.Series([score_nutrition(recommendation.loc[i], protein_meal, fat_meal, carb_meal) for i in recommendation.index], index=recommendation.index)
-    
+    if meal_type in calories_split.keys():
+        recommendation['nutrition penalty']=pd.Series([score_nutrition(recommendation.loc[i], protein_meal, fat_meal, carb_meal) for i in recommendation.index], index=recommendation.index)
+    else:
+        recommendation['nutrition penalty']=pd.Series([(recommendation.loc[i]['carbs']+recommendation.loc[i]['fats']) for i in recommendation.index], index=recommendation.index)
     # Creation of temp_dataset for the user_score calculation
 
     temp_data=data[data.meal==meal_type]
