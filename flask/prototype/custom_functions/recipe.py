@@ -53,8 +53,8 @@ def return_recipes(calories=2500,
     
     if meal_type in calories_split.keys():
         calories_meal = calories*calories_split[meal_type]
-        calories_max = calories_meal*1.15
-        calories_min = calories_meal*0.85
+        calories_max = calories_meal*1.2
+        calories_min = calories_meal*0.8
         if meal_type=='breakfast':
             calories_min = calories_meal*0.7
 
@@ -79,7 +79,7 @@ def return_recipes(calories=2500,
     garnish=['parsley', 'dried parsley', 'cilantro', 'cilantro leaves', 'dill',
              'celery leaves', 'chives', 'chocolate chips', 'sesame', 'black sesame seeds', 'sesame seeds']
     # separate ingredients from non-ingredients
-    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'recipe_text', 'image', 'image_link']
+    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'recipe_text', 'ingredient_txt','image', 'image_link']
     non_ingredients.extend(spices)
     group_keys=['pasta', 'mold cheese', 'soft cheese', 'brined cheese', 'medium cheese', 'hard cheese', 'cottage cheese', 'dry wine',
                 'liquer', 'white wine', 'red wine']
