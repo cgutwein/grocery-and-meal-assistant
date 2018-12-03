@@ -78,7 +78,7 @@
 76,chili paste,,,,
 77,rosemary,,,,
 78,muscovado sugar,,,,spice
-79,baby potatoes,potatoes,,,
+79,baby potatoes,potatoes,,,vegetable
 80,marinade,,,,
 81,cointreau liqueur,liqueur,,,
 82,mie,,,,
@@ -150,7 +150,7 @@
 148,duck fat,,,,poultry
 149,tuna,,,,fish
 150,parmesan,hard cheese,,,
-151,mashed potatoes,,,,
+151,mashed potatoes,potatoes,,,
 152,fish,,,,fish
 153,sucanat,sugar,,,
 154,squash,pumpkin,,,vegetable
@@ -535,7 +535,7 @@
 533,goose,,,,
 534,dessert wine,,,,
 535,garam masala,,,,
-536,oatmeal,,,,
+536,oats,,,,
 537,radish,,,,vegetable
 538,olives,,,,meat
 539,candied peel,,,,
@@ -592,7 +592,7 @@
 590,corn kernels,,,,vegetable
 591,biscuit dough,,,,
 592,chocolate glaze,,,,
-593,potato,,,,vegetable
+593,potato,potatoes,,,vegetable
 594,soy sauce,,,,
 595,elbow pasta,pasta,,,
 596,olive oil,canola oil,peanut oil,coconut oil,
@@ -640,12 +640,12 @@
 638,lamb sausage,sausage,,,meat
 639,jalapeno chilies,,,,vegetable
 640,caramel sauce,,,,seafood
-641,potato soup,,,,vegetable
+641,potato soup,,,,
 642,vanilla cream,,,,
 643,aged vinegar,vinegar,,,
 644,karo,,,,
 645,hanger steak,,,,
-646,potato chips,,,,vegetable
+646,potato chips,,,,
 647,chocolate,,,,
 648,quinoa,,,,
 649,pumpkin seeds,,,,vegetable
@@ -686,7 +686,7 @@
 684,cracker crumbs,,,,meat
 685,bittersweet chocolate,chocolate,,,
 686,campanelle,pasta,,,seafood
-687,potato gnocchi,,,,vegetable
+687,potato gnocchi,,,,
 688,glaze,,,,
 689,pesto,,,,
 690,iceberg lettuce,,,,vegetable
@@ -934,7 +934,7 @@
 932,chickpea flour,,,,
 933,sweet miso,,,,
 934,paccheri,pasta,,,
-935,rolled oats,,,,
+935,rolled oats,oats,,,
 936,brie,soft cheese,,,
 937,mustard powder,,,,
 938,pumpkin,squash,,,vegetable
@@ -1378,7 +1378,7 @@
 1376,fern,,,,
 1377,gold leaf,,,,
 1378,pig feet,pork,,,meat
-1379,oat groats,,,,
+1379,oat groats,oats,,,
 1380,sorbet,,,,
 1381,cocktail sauce,,,,
 1382,cherry,,,,fruit
@@ -1521,7 +1521,7 @@
 1519,sweet sherry,dry wine,,,
 1520,sweetbread,,,,
 1521,romano cheese,hard cheese,,,
-1522,russet potatoes,,,,
+1522,russet potatoes,potatoes,,,
 1523,gremolata,,,,
 1524,potato starch,,,,
 1525,pearl tapioca,,,,
@@ -1560,7 +1560,7 @@
 1558,splenda,sugar,,,
 1559,dry milk,,,,
 1560,maraschino,liqueur,,,
-1561,sweet potatoes,,,,
+1561,sweet potatoes,potatoes,,,
 1562,assorted vegetables,,,,
 1563,xuxu,liqueur,,,
 1564,dried minced garlic,,,,spice
@@ -1668,7 +1668,7 @@
 1666,bay seasoning,,,,
 1667,cognac,,,,
 1668,stew meat,,,,meat
-1669,yukon gold potato,,,,vegetable
+1669,yukon gold potato,potatoes,,,vegetable
 1670,string cheese,mold cheese,,,
 1671,hazelnut oil,oil,,,
 1672,deveined shrimp,shrimp,,,seafood
@@ -1795,7 +1795,7 @@
 1793,knockwurst sausage,sausage,,,meat
 1794,whipped topping,,,,
 1795,buttermilk biscuits,,,,
-1796,oat bran,,,,
+1796,oat bran,oats,,,
 1797,butter beans,bean,,,vegetable
 1798,buffalo sauce,,,,
 1799,pound cake,,,,
