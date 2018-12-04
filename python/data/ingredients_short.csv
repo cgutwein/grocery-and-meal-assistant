@@ -66,7 +66,7 @@
 64,crimini mushrooms,mushroom,,,vegetable
 65,agar,,,,
 66,lavash,pita,,,
-67,hazelnut,,,,
+67,hazelnut,nuts,,,
 68,piloncillo,sugar,,,
 69,hot mustard,mustard,,,
 70,raclette,hard cheese,,,
@@ -78,7 +78,7 @@
 76,chili paste,,,,
 77,rosemary,,,,
 78,muscovado sugar,,,,spice
-79,baby potatoes,potatoes,,,vegetable
+79,baby potatoes,potato,,,vegetable
 80,marinade,,,,
 81,cointreau liqueur,liqueur,,,
 82,mie,,,,
@@ -150,7 +150,7 @@
 148,duck fat,,,,poultry
 149,tuna,,,,fish
 150,parmesan,hard cheese,,,
-151,mashed potatoes,potatoes,,,
+151,mashed potatoes,potato,,,
 152,fish,,,,fish
 153,sucanat,sugar,,,
 154,squash,pumpkin,,,vegetable
@@ -170,7 +170,6 @@
 168,pitted cherries,,,,
 169,barley,,,,
 170,onion,chives,shallot,leek,vegetable
-171,eggplants,,,,
 172,cream cheese frosting,,,,
 173,bean,,,,
 174,chayotes,squash,,,vegetable
@@ -227,11 +226,10 @@
 225,bun,,,,
 226,strawberry,,,,fruit
 227,gin,,,,
-228,vegetables,,,,
 229,red rice,rice,,,
 230,muscat,,,,
 231,vinegar,,,,
-232,cashew,,,,
+232,cashew,nuts,,,
 233,bread,,,,
 234,red caviar,,,,fish
 235,converted rice,,,,
@@ -283,8 +281,8 @@
 281,orange flower water,,,,
 282,celery leaves,celery,,,vegetable
 283,chocolate wafer cookies,,,,
-284,almond,,,,
-285,pizza dough,,,,
+284,almond,nuts,,,
+285,pizza dough,dough,,,
 286,hot chili,,,,
 287,rainbow trout,,,,fish
 288,slider buns,,,,
@@ -334,7 +332,7 @@
 332,spaghetti,pasta,,,
 333,tuna in oil,,,,fish
 334,raisin,,,,fruit
-335,fingerling potatoes,potatoes,,,
+335,fingerling potatoes,potato,,,
 336,buckwheat flour,flour,,,
 337,pepperoncini,chile pepper,,,vegetable
 338,veal loin chops,,,,meat
@@ -344,7 +342,7 @@
 342,spinach,,,,vegetable
 343,vanilla vodka,vodka,,,
 344,grapefruit juice,,,,
-345,root vegetables,,,,
+345,root vegetables,,,,vegetable
 346,king crab,crabs,,,seafood
 347,peanut butter,,,,
 348,sesame seed paste,,,,
@@ -357,7 +355,7 @@
 355,dried kelp,,,,spice
 356,sweet corn,corn,,,vegetable
 357,celery,,,,vegetable
-358,vegetable,,,,
+358,vegetable,,,,vegetable
 359,brown sugar,sugar,sugar,,fruit
 360,ricotta cheese,curd cheese,,,
 361,mustard greens,,,,vegetable
@@ -382,7 +380,7 @@
 380,dill,,,,
 381,custard powder,,,,
 382,apple cider,,,,
-383,baby artichokes,artichokes,,,
+383,baby artichokes,artichokes,,,vegetable
 384,garlic powder,,,,vegetable
 385,flour for dusting,flour,,,
 386,corn meal,,,,spice
@@ -391,14 +389,14 @@
 389,sherry vinegar,,,,
 390,pickled garlic,,,,vegetable
 391,chile arbol,chili pepper,,,vegetable
-392,curry paste,,,,meat
+392,curry paste,,,,
 393,blackberry,,,,fruit
 394,cranberry sauce,,,,
 395,dandelion greens,,,,vegetable
 396,aged manchego cheese,hard cheese,,,
 397,rice wine vinegar,,,,
 398,mayonnaise,,,,
-399,salted peanuts,peanuts,,,
+399,salted peanuts,nuts,peanut,,
 400,pickle relish,,,,
 401,chicken cutlet,,,,poultry
 402,monkfish,,,,fish
@@ -410,7 +408,6 @@
 408,safflower oil,,,,
 409,amaretti cookies,,,,
 410,passion fruit,,,,
-411,potatoes,,,,
 412,soursop,,,,
 413,lettuce,,,,vegetable
 414,shiitake mushroom caps,,,,vegetable
@@ -422,13 +419,13 @@
 420,matza,,,,fruit
 421,dried pear,,,,fruit
 422,butter lettuce,,,,vegetable
-423,walnut oil,,,,poultry
+423,walnut oil,,,,
 424,bourbon whiskey,whiskey,,,
 425,beet greens,,,,vegetable
 426,pizza crust,,,,
 427,cilantro,parsley,,,vegetable
 428,penne,pasta,,,
-429,slivered almonds,almond,,,
+429,slivered almonds,nuts,almond,,
 430,kale,,,,vegetable
 431,dry rub,,,,
 432,strozzapreti,pasta,,,
@@ -448,7 +445,7 @@
 446,rock sugar,sugar,,,
 447,roast,,,,
 448,flour,corn meal,,,
-449,sourdough,,,,fruit
+449,sourdough,dough,,,
 450,salted pistachios,pistachio,,,
 451,scotch bonnet chile,bell pepper,,,vegetable
 452,fig,,,,fruit
@@ -489,7 +486,7 @@
 487,bee pollen,,,,
 488,pecan,,,,
 489,chicken breast,,,,poultry
-490,peanut,,,,
+490,peanut,nuts,,,
 491,lamb stew meat,,,,meat
 492,dry yeast,,,,
 493,loaf,,,,
@@ -532,12 +529,12 @@
 530,kalamata olives,olives,,,
 531,long-grain rice,,,,
 532,brewed tea,,,,
-533,goose,,,,
+533,goose,,,,poultry
 534,dessert wine,,,,
 535,garam masala,,,,
 536,oats,,,,
 537,radish,,,,vegetable
-538,olives,,,,meat
+538,olives,,,,vegetable
 539,candied peel,,,,
 540,liquid smoke,,,,
 541,muffin,,,,
@@ -550,7 +547,7 @@
 548,turkey,chicken,,,meat
 549,tabasco sauce,,,,
 550,peeled tomatoes,,,,
-551,crayfish,,,,
+551,crayfish,,,,seafood
 552,margarine,,,,
 553,citrus vinaigrette,,,,
 554,strawberry ice cream,ice cream,,,
@@ -571,18 +568,18 @@
 569,dark ale,beer,,,fish
 570,chipotle chili,chili pepper,,,vegetable
 571,couscous,,,,
-572,mesclun,,,,
+572,mesclun,,,,vegetable
 573,cauliflower,,,,vegetable
 574,broccolini,broccoli,,,vegetable
 575,campari,liqueur,,,
-576,cinnamon,allspice,nutmeg,,
+576,cinnamon,allspice,nutmeg,,spice
 577,soft corn tortillas,tortillas,,,
 578,jamaica,,,,
 579,quince,pear,,,fruit
 580,salt pork,,,,meat
 581,macadamia nuts,nuts,,,
 582,beef brisket,,,,meat
-583,calamari,,,,
+583,calamari,,,,seafood
 584,cider,,,,
 585,parsley,cilantro,,,vegetable
 586,fat,,,,
@@ -590,14 +587,14 @@
 588,radicchio leaves,,,,vegetable
 589,coconut milk,,,,
 590,corn kernels,,,,vegetable
-591,biscuit dough,,,,
+591,biscuit dough,pastry dough,,,
 592,chocolate glaze,,,,
-593,potato,potatoes,,,vegetable
+593,potato,potato,,,vegetable
 594,soy sauce,,,,
 595,elbow pasta,pasta,,,
 596,olive oil,canola oil,peanut oil,coconut oil,
-597,pie dough,,,,
-598,apple schnapps,,,,
+597,pie dough,pastry dough,,,
+598,apple schnapps,schnapps,,,
 599,coconut aminos,soy sauce,,,
 600,thai jasmine rice,rice,,,
 601,ras el hanout,,,,
@@ -718,7 +715,6 @@
 716,black truffles,,,,vegetable
 717,beef stock granules,,,,meat
 718,crab claws,,,,
-719,filo dough,,,,
 720,chioggia wine,wine,,,
 721,cherry vinegar,vinegar,,,
 722,foie gras,,,,
@@ -760,7 +756,7 @@
 758,lemon extract,,,,
 759,sparkling wine,champagne,,,
 760,orecchiette,pasta,,,
-761,salted roasted almonds,almond,,,
+761,salted roasted almonds,nuts,almond,,
 762,tamarind,,,,fruit
 763,ground red pepper,black pepper,,,vegetable
 764,california chile,chili pepper,,,vegetable
@@ -796,11 +792,10 @@
 794,applejack,brandy,,,
 795,berry,,,,
 796,beef rib roast,,,,meat
-797,mixed nuts,,,,
+797,mixed nuts,nuts,,,
 798,limeade concentrate,,,,
 799,parmigiano reggiano cheese,hard cheese,,,
 800,kimchi juice,,,,
-801,cucumbers,,,,meat
 802,dried currants,,,,
 803,edamame beans,soybeans,,,vegetable
 804,crystallized ginger,,,,vegetable
@@ -905,7 +900,7 @@
 903,toast,,,,
 904,grit,,,,
 905,irish whiskey,,,,
-906,pickled vegetables,,,,
+906,pickled vegetables,,,,vegetable
 907,cayenne pepper,chili pepper,,,vegetable
 908,bitter,,,,
 909,challah,bread,,,
@@ -941,7 +936,7 @@
 939,sweet white wine,white wine,,,
 940,boar,,,,
 941,lamb leg,,,,meat
-942,water chestnuts,,,,
+942,water chestnuts,chestnut,,,
 943,dry sherry,,,,
 944,green chili pepper,chili pepper,,,vegetable
 945,cracker,,,,
@@ -953,7 +948,6 @@
 951,flank steak,,,,
 952,tapioca starch,,,,
 953,atta,flour,,,
-954,almonds,,,,
 955,almond flour,flour,,,
 956,frangipane,,,,
 957,melon,,,,
@@ -963,7 +957,7 @@
 961,split peas,peas,,,vegetable
 962,seafood seasoning,,,,
 963,icing mix,,,,
-964,roasted peanuts,,,,
+964,roasted peanuts,nuts,peanut,,
 965,salad dressing,,,,
 966,curry,,,,
 967,tea leaves,black tea,,,
@@ -1028,7 +1022,7 @@
 1026,pork shoulder,pork,,,meat
 1027,lamb shank,,,,meat
 1028,italian seasoning,,,,
-1029,walnut,,,,
+1029,walnut,nuts,,,
 1030,pork butt,pork,,,meat
 1031,lumpia wrappers,,,,
 1032,squid,,,,seafood
@@ -1047,7 +1041,7 @@
 1045,stilton cheese,mold cheese,,,
 1046,filling,,,,
 1047,sweet vermouth,dry wine,,,
-1048,waxy potatoes,potatoes,,,
+1048,waxy potatoes,potato,,,
 1049,pitted prunes,,,,fruit
 1050,milk powder,,,,
 1051,tamari soy sauce,soy sauce,,,
@@ -1097,7 +1091,6 @@
 1095,crab boil,,,,vegetable
 1096,marsala wine,dry wine,,,
 1097,rice paper,,,,
-1098,walnuts,,,,
 1099,stewed tomatoes,,,,vegetable
 1100,apricot nectar,,,,
 1101,baguette,,,,
@@ -1149,8 +1142,8 @@
 1147,furikake,,,,
 1148,tamarind paste,,,,fruit
 1149,salt black pepper,black pepper,,,
-1150,salted cashews,cashew,,,
-1151,black olives,olives,,,meat
+1150,salted cashews,nuts,cashew,,
+1151,black olives,olives,,,
 1152,corn bread,bread,,,
 1153,condensed milk,,,,
 1154,crab meat,,,,meat
@@ -1195,7 +1188,7 @@
 1193,soy yogurt,greek yogurt,,,
 1194,persimmon,,,,fruit
 1195,yellow rice,rice,,,
-1196,zucchini blossoms,,,,meat
+1196,zucchini blossoms,,,,
 1197,roasting chickens,,,,
 1198,white pepper,black pepper,,,vegetable
 1199,cherry peppers,,,,fruit
@@ -1214,7 +1207,7 @@
 1212,dates,fig,,,fruit
 1213,preserve,,,,
 1214,mulato chiles,poblano chiles,chili pepper,,
-1215,nut,,,,
+1215,nut,nuts,,,
 1216,bonito flakes,,,,
 1217,bone-in ribs,ribs,,,
 1218,baby kale,kale,,,vegetable
@@ -1302,7 +1295,6 @@
 1300,tea,,,,spice
 1301,pickle juice,,,,
 1302,orange liqueur,,,,
-1303,artichokes,,,,
 1304,manchego cheese,hard cheese,,,
 1305,silver tequila,,,,
 1306,veal shanks,lamb shanks,,,meat
@@ -1389,7 +1381,6 @@
 1387,matza dough,,,,
 1388,amaretto liqueur,,,,
 1389,chinese noodles,,,,
-1390,marshmallows,,,,
 1391,bass,,,,fish
 1392,stout,beer,,,seafood
 1393,white quinoa,quinoa,,,
@@ -1499,7 +1490,7 @@
 1497,green peppercorns,black pepper,,,vegetable
 1498,dry gin,,,,
 1499,aquavit,vodka,,,
-1500,black walnut,,,,sauce
+1500,black walnut,nuts,walnut,,
 1501,peasant bread,bread,,,
 1502,twist,,,,
 1503,club soda,soda,,,
@@ -1521,7 +1512,7 @@
 1519,sweet sherry,dry wine,,,
 1520,sweetbread,,,,
 1521,romano cheese,hard cheese,,,
-1522,russet potatoes,potatoes,,,
+1522,russet potatoes,potato,,,
 1523,gremolata,,,,
 1524,potato starch,,,,
 1525,pearl tapioca,,,,
@@ -1530,7 +1521,7 @@
 1528,sanding sugar,sugar,,,
 1529,chicken wing drummettes,,,,poultry
 1530,toasted coconut,,,,fruit
-1531,mixed vegetables,,,,
+1531,mixed vegetables,,,,vegetable
 1532,eau de vie,brandy,,,
 1533,spaghetti sauce seasoning mix,,,,
 1534,grilled chicken,chicken,,,fruit
@@ -1544,7 +1535,7 @@
 1542,strained yogurt,greek yogurt,,,
 1543,lemongrass,,,,vegetable
 1544,shortcake,,,,
-1545,beef steak,,,,meat
+1545,beef steak,steak,,,meat
 1546,rice bran oil,,,,
 1547,black vinegar,,,,
 1548,clementine,tangerine,,,spice
@@ -1560,8 +1551,7 @@
 1558,splenda,sugar,,,
 1559,dry milk,,,,
 1560,maraschino,liqueur,,,
-1561,sweet potatoes,potatoes,,,
-1562,assorted vegetables,,,,
+1561,sweet potatoes,potato,,,
 1563,xuxu,liqueur,,,
 1564,dried minced garlic,,,,spice
 1565,mascarpone,cream cheese,,,
@@ -1569,7 +1559,7 @@
 1567,pilsner,beer,,,
 1568,coffee granules,instant coffee,,,
 1569,distilled vinegar,vinegar,,,
-1570,puffed rice,,,,spice
+1570,puffed rice,rice,,,spice
 1571,seed dressing,,,,
 1572,dried sage,,,,
 1573,granola,,,,
@@ -1617,7 +1607,7 @@
 1615,black trumpet mushrooms,mushroom,,,
 1616,ancho chil pepper,chili pepper,,,vegetable
 1617,herbes provence,,,,
-1618,dried dill,,,,
+1618,dried dill,,,,greens
 1619,fennel fronds,,,,vegetable
 1620,champagne vinegar,vinegar,,,
 1621,black caviar,,,,fish
@@ -1668,7 +1658,7 @@
 1666,bay seasoning,,,,
 1667,cognac,,,,
 1668,stew meat,,,,meat
-1669,yukon gold potato,potatoes,,,vegetable
+1669,yukon gold potato,potato,,,vegetable
 1670,string cheese,mold cheese,,,
 1671,hazelnut oil,oil,,,
 1672,deveined shrimp,shrimp,,,seafood
@@ -1693,7 +1683,7 @@
 1691,chinese cabbage,napa cabbage,,,vegetable
 1692,gravy sauce,,,,
 1693,salted anchovy,anchovy,,,fish
-1694,smoked almonds,,,,
+1694,smoked almonds,nuts,almond,,
 1695,duqqa,,,,
 1696,chocolate shavings,,,,
 1697,rhubarb,,,,fruit
@@ -1709,7 +1699,7 @@
 1707,harissa chili pepper,chili pepper,,,vegetable
 1708,pearl barley,,,,
 1709,green lentil,lentil,,,
-1710,almond meal,,,,cereal
+1710,almond meal,,,,
 1711,crumb crust,,,,
 1712,taco sauce,,,,
 1713,yellowtail,,,,
@@ -1731,7 +1721,7 @@
 1729,ghee,butter,,,
 1730,hot spanish paprika,paprika,,,
 1731,pastry cream,,,,
-1732,bread dough,,,,
+1732,bread dough,dough,,,
 1733,brandy,,,,
 1734,ahi,,,,
 1735,dressing,,,,
@@ -1739,7 +1729,7 @@
 1737,beef tongue,,,,meat
 1738,vinaigrette dressing,,,,
 1739,rice cakes,,,,
-1740,starchy potatoes,potatoes,,,
+1740,starchy potatoes,potato,,,
 1741,rye,,,,
 1742,agave tequila,,,,
 1743,pizza shells,,,,seafood
@@ -1771,7 +1761,7 @@
 1769,brewed espresso,brewed coffee,,,
 1770,kimchi,,,,
 1771,turkey cutlets,chicken cutlets,,,meat
-1772,fruit,,,,meat
+1772,fruit,,,,fruit
 1773,lo mein noodles,noodles,,,
 1774,tater tots,french fries,,,
 1775,candy canes,,,,vegetable
@@ -1780,7 +1770,7 @@
 1778,round loaf,bread,,,
 1779,borage,,,,
 1780,fideos,noodles,,,
-1781,purple potatoes,potatoes,,,
+1781,purple potatoes,potato,,,
 1782,skirt steak,,,,
 1783,yellow bell pepper,bell pepper,,,vegetable
 1784,peach preserves,,,,fruit
@@ -1816,7 +1806,7 @@
 1814,corn husks,,,,vegetable
 1815,burrata,buffalo mozzarella,,,
 1816,beef marrow,,,,meat
-1817,frozen peas,,,,meat
+1817,frozen peas,,,,vegetable
 1818,tapioca pearls,,,,
 1819,cherry juice,,,,
 1820,ham hock,,,,meat
@@ -1885,7 +1875,7 @@
 1883,quince paste,,,,fruit
 1884,smoked ham hocks,,,,meat
 1885,cheese tortellini,cheese ravioli,,,
-1886,yukon gold potatoes,potatoes,,,
+1886,yukon gold potatoes,potato,,,
 1887,turbinado,sugar,,,
 1888,stuffing,filling,,,vegetable
 1889,cherry vanilla ice cream,ice cream,,,
@@ -1912,7 +1902,7 @@
 1910,macaroni,pasta,,,
 1911,gnocchetti sardi,,,,
 1912,barbecue rub,,,,
-1913,pepperoni,salami,,,meat
+1913,pepperoni,salami,,,
 1914,egg bread,bread,,,egg
 1915,piquillo peppers,chili pepper,,,vegetable
 1916,rum raisin ice cream,ice cream,,,
@@ -1923,7 +1913,7 @@
 1921,oyster mushrooms,mushroom,,,vegetable
 1922,maida flour,,,,
 1923,coconut sugar,sugar,,,spice
-1924,onion powder,,,,meat
+1924,onion powder,,,,
 1925,cooking apples,,,,
 1926,dried fig,,,,fruit
 1927,mackerel,,,,fish
