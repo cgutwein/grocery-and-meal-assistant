@@ -21,7 +21,7 @@
       				{% for error in form.new_name.errors %}
       				<span style="color: red;">[{{ error }}]</span>
       				{% endfor %}
-      				{{ form.new_submit(size=32) }}<br>
+      				{{ form.new_submit(size=32, class_='btn btn-info') }}<br>
       				{% for error in form.new_submit.errors %}
       				<span style="color: red;">[{{ error }}]</span>
       				{% endfor %}

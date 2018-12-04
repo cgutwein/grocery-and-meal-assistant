@@ -48,9 +48,9 @@ def return_recipes(calories=2500,
 ################
 ################
 
-    ## desserts and drinks wouldnt have the calories limit, but would be sorted by their nutrition values 
+    ## desserts and drinks wouldnt have the calories limit, but would be sorted by their nutrition values
     calories_split={'breakfast': 0.2, 'lunch/dinner': 0.3, 'lunch': 0.3, 'dinner': 0.3, 'snack': 0.1}
-    
+
     if meal_type in calories_split.keys():
         calories_meal = calories*calories_split[meal_type]
         calories_max = calories_meal*1.2
@@ -59,7 +59,7 @@ def return_recipes(calories=2500,
             calories_min = calories_meal*0.7
 
     ## reducing nutritional values to per meal values
-        protein_meal = protein*calories_split[meal_type]        
+        protein_meal = protein*calories_split[meal_type]
         protein_min = protein_meal*0.85
         if meal_type=='breakfast':
             calories_min = calories_meal*0.7
@@ -114,7 +114,7 @@ def return_recipes(calories=2500,
                        (data.protein>protein_min)&
                        (data.complexity<=complexity)
                       ]
-    
+
     else:
         options=data[(data.meal==meal_type)&
                        (data.complexity<=complexity)]
@@ -122,8 +122,8 @@ def return_recipes(calories=2500,
     if 'all' not in cuisine:
         options=options[options.cuisine.isin(cuisine)]
 
-    
-    
+
+
     #filter based on grocery
 
     # drop columns with unused ingredients
@@ -142,7 +142,7 @@ def return_recipes(calories=2500,
     ind=[x for x in sums.index if sums.loc[x]<=n_additional_ingredients]
     options=options.loc[ind]
 
-    recommendation=options.loc[ind][['title', 'calories', 'protein', 'carbs', 'fats']]
+    recommendation=options.loc[ind][['title', 'calories', 'protein', 'carbs', 'fats', 'image_link', 'recipe_text', 'ingredient_txt']]
 
     recommendation['products to add']=pd.Series([', '.join(list(options.loc[i][needed][options.loc[i][needed]==1].index)) for i in ind], index=ind)
 
@@ -157,7 +157,7 @@ def return_recipes(calories=2500,
     temp_data=data[data.meal==meal_type]
     temp_data=temp_data.drop(non_ingredients, axis=1)
 
-    user_score={461:5, 1693:4, 400:5, 189:2, 2704:3, 4867:3, 5470:4, 159:3, 1588:4, 447:3, 26:2, 101:1}	
+    user_score={461:5, 1693:4, 400:5, 189:2, 2704:3, 4867:3, 5470:4, 159:3, 1588:4, 447:3, 26:2, 101:1}
     # Filter the user_score dict to have only the items of the appropriate meal type
     keys=list(filter(lambda x: data.loc[x].meal==meal_type, user_score.keys()))
     temp_user_score=dict(zip(keys, [user_score[key] for key in keys]))
@@ -166,11 +166,12 @@ def return_recipes(calories=2500,
         recommendation['user score']=pd.Series([0]*recommendation.shape[0], index=recommendation.index)
     else:
         recommendation['user score']=pd.Series([score_preference(i, temp_user_score, temp_data) for i in recommendation.index], index=recommendation.index)
-    
-   # Create the output dataset    
+
+   # Create the output dataset
     rec_list = []
     n = len(recommendation)
     rec_sorted = recommendation.sort_values(by=[sort_field])
+    print(len(rec_sorted['image_link']))
     for i in range(n):
         rec_list.append(RecListTableItem(rec_sorted.iloc[i]['title'],rec_sorted.iloc[i]['calories'],rec_sorted.iloc[i]['fats'],rec_sorted.iloc[i]['carbs'],rec_sorted.iloc[i]['protein'],rec_sorted.iloc[i]['products to add'], rec_sorted.iloc[i]['nutrition penalty'], rec_sorted.iloc[i]['user score']))
-    return (RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-hover'}))
+    return (rec_sorted) #(RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-hover'}))

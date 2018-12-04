@@ -10,7 +10,7 @@
 			<form action="" method="post" novalidate>
       		{{ form.hidden_tag() }}
       		<p align="center">
-							{{ form.meal_type.label }}
+							<b>{{ form.meal_type.label }}</b>
 							{% for subfield in form.meal_type %}
 							<tr>
 									<td>{{ subfield }}</td>
@@ -20,12 +20,12 @@
 							{% for error in form.meal_type.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 							{% endfor %}<br>
-						  {{ form.dof.label }}
+						  <b>{{ form.dof.label }}</b>
       				{{ form.dof(size=32) }}
       				{% for error in form.dof.errors %}
       				<span style="color: red;">[{{ error }}]</span>
       				{% endfor %}<br>
-                            {{ form.sorting_field.label }}
+                            <b>{{ form.sorting_field.label }}</b>
 							{% for subfield in form.sorting_field %}
 							<tr>
 									<td>{{ subfield }}</td>
@@ -35,7 +35,7 @@
 							{% for error in form.sorting_field.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 							{% endfor %}<br>
-      				{{ form.submit(size=32) }}<br>
+      				{{ form.submit(class_='btn btn-primary') }}<br>
       				{% for error in form.submit.errors %}
       				<span style="color: red;">[{{ error }}]</span>
       				{% endfor %}<br>
@@ -49,12 +49,47 @@
 	<div class="row">
 		<div class="col-sm-1"></div>
 		<div class="col-sm-10">
-		<p align="center">
-		{% if recs %}
-		{{recs}}
-		{% else %}
-		{% endif %}
-		</p>
+
+			{% if recs is defined %}
+		<div class="accordion" id="accordionRec">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Recipe Name</th>
+						<th>Calories</th>
+						<th>Protein (g)</th>
+						<th>Fat (g)</th>
+						<th>Carbs (g)</th>
+					</tr>
+				</thead>
+				<tbody>
+			{% for key, value in recs.iterrows() %}
+			<tr data-toggle="collapse" data-target="#{{key}}" class="accordion-toggle" role="button" aria-expanded="false" aria-controls="{{key}}">
+				<td style="font-size: 20px;"><font color="#333399">{{value['title']}}</font></td>
+				<td>{{value['calories']}}</td>
+				<td>{{value['protein']}}</td>
+				<td>{{value['fats']}}</td>
+				<td>{{value['carbs']}}</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<div id="{{key}}" class="collapse show" data-parent="#accordionRec" aria-hidden="true" style="height: auto;">
+						<img src="static/{{value['image_link']}}" style="float:left; padding-right: 10px;">
+						<b> Ingredients: </b> {{value['ingredient_txt']}}<br>
+						<font color="#333399"<b> New Ingredients to Add to List:</b> <u>{{value['products to add']}}</u></font>
+						<hr>
+						<b> Recipe Instructions: </b> {{value['recipe_text']}}
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<p align="center">Select your preferences and run the optimizer.</p>
+			{% endif %}
+
+			</table>
+			</div>
+
 		</div>
 		<div class="col-sm-1"></div>
 	</div>

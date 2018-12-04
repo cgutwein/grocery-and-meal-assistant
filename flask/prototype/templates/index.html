@@ -6,9 +6,18 @@
 	<h1 align="center">Hello {{current_user.username}}, welcome to the Recepticon</h1>
 	{% endif %}
 	<br />
-	<h2 align="center"><img src="static/recepticon.png" alt="Recepticon Logo"></h2>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-sm-12">
+	     <h2 align="center"><img src="static/recepticon.png" alt="Recepticon Logo"></h2>
+        <a href="{{ url_for('user', username=current_user.username) }}" role="button" align="center" class="btn btn-primary">Step 1. Create an Account</a><br>
+        <a href="/grocery_list" role="button" align="center" class="btn btn-primary">Step 2. Make a Grocery List</a><br>
+        <a href="/recipe" role="button" align="center" class="btn btn-primary">Step 3. Get Recipes Recommendations</a><br>
+      </div>
+    </div>
+  </div>
 	<br />
-    <form action="http://localhost:5000/results" method="post" enctype = "multipart/form-data">
+    <!-- <form action="http://localhost:5000/results" method="post" enctype = "multipart/form-data">
         {{ form.hidden_tag() }}
         <div class="container">
         	<div class="row">
@@ -113,5 +122,5 @@
             {% endfor %}
         </div> <br>
         <div align="center">{{ form.submit() }}</div>
-    </form>
+    </form> -->
 {% endblock %}
