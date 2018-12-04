@@ -92,14 +92,14 @@ class GroceryList:
 
     def add_item(self, item):
         self.groc_list.append(item)
-        print(item + " has been added to " + self.name + ".")
+        #print(item + " has been added to " + self.name + ".")
 
     def delete_item(self, item):
         self.groc_list.remove(item)
-        print(item + " has been removed from " + self.name + ".")
+        #print(item + " has been removed from " + self.name + ".")
 
     def get_items(self):
-        print("Current items in " + self.name + ":")
+        #print("Current items in " + self.name + ":")
         for item in self.groc_list:
             print(item)
 
