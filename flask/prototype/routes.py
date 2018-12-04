@@ -154,7 +154,10 @@ def recipes():
             dof = form.dof.data
             meal_type = form.meal_type.data
             sort_field = form.sorting_field.data
-            recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field)
+            if current_user.daily_cal:
+                recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field)
+            else:
+                recs = "Please complete your user profile to see recipe recommendations."
             if recs == "":
                 recs = "No results generated from search.Try again."
             return render_template('recipes.html', title='Grocery List - Current', form=form, recs=recs)
