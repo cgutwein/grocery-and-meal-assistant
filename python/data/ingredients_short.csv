@@ -1,5 +1,5 @@
 ,stem,substitute 1,substitute 2,substitute 3,food type
-0,cream,half-and-half,,,
+0,cream,half-and-half,,,dairy
 1,flaxseed,,,,
 2,farro,,,,
 3,applesauce,,,,
@@ -10,7 +10,7 @@
 8,dried orange peel,,,,
 9,garlic salt,salt,,,
 10,snail,,,,seafood
-11,kefalotyri cheese,hard cheese,,,
+11,kefalotyri cheese,hard cheese,,,dairy
 12,passover wine,kosher wine,,,
 13,vermouth,dry wine,,,
 14,pork tenderloin,pork tenderloin,pork loin,,meat
@@ -18,11 +18,11 @@
 16,shimeji mushrooms,,,,
 17,juniper berries,,,,fruit
 18,sweet gherkin,pickled cucumbers,,,vegetable
-19,cheese,medium cheese,,,
+19,cheese,medium cheese,,,dairy
 20,hominy,,,,
 21,peanut sauce,,,,
 22,wheat tortillas,,,,
-23,cotija cheese,brined cheese,,,
+23,cotija cheese,brined cheese,,,dairy
 24,sardine,,,,fish
 25,icing,,,,
 26,demi-glace,,,,
@@ -30,8 +30,8 @@
 28,harissa sauce,,,,
 29,coleslaw,,,,
 30,mushroom,,,,
-31,cream cheese with chives,cream cheese,,,
-32,yogurt,greek yogurt,,,
+31,cream cheese with chives,cream cheese,,,dairy
+32,yogurt,greek yogurt,,,dairy
 33,crisp,,,,
 34,cucumber,,,,vegetable
 35,dill pickles,pickled cucumber,,,vegetable
@@ -43,7 +43,7 @@
 41,caviar,,,,fish
 42,america,,,,
 43,beef hot dogs,,,,meat
-44,guinea hens,chicken,,,meat
+44,guinea hens,chicken,,,poultry
 45,flounder,,,,fish
 46,veal bones,beef bones,,,meat
 47,yellow lentils,lentil,,,
@@ -52,8 +52,8 @@
 50,salsa verde,,,,
 51,coconut oil,oil,,,
 52,pork rind,,,,meat
-53,tenderloin,,,,
-54,white cheese,brined cheese,,,
+53,tenderloin,,,,meat
+54,white cheese,brined cheese,,,dairy
 55,pork cutlets,,,,meat
 56,okra,,,,vegetable
 57,canela,cinnamon,,,
@@ -72,7 +72,7 @@
 70,raclette,hard cheese,,,
 71,sriracha,,,,
 72,barilla,pasta,,,
-73,sirloin steak,,,,
+73,sirloin steak,steak,,,meat
 74,butternut squash,squash,pumpkin,,vegetable
 75,truffle,,,,
 76,chili paste,,,,
@@ -118,7 +118,7 @@
 116,toffee sauce,,,,
 117,garlic,garlic,garlic powder,,vegetable
 118,bacon,,,,meat
-119,cream cheese,,,,
+119,cream cheese,,,,dairy
 120,baby portobello mushrooms,mushroom,,,vegetable
 121,whiskey,,,,
 122,citron,,,,fruit
@@ -133,7 +133,7 @@
 131,lacinato kale,kale,,,vegetable
 132,fish sauce,,,,fish
 133,kidney beans,beans,,,vegetable
-134,greek yogurt,,,,
+134,greek yogurt,,,,dairy
 135,clams,,,,
 136,lentil,,,,
 137,biscuit,,,,
@@ -155,13 +155,12 @@
 153,sucanat,sugar,,,
 154,squash,pumpkin,,,vegetable
 155,clementine juice,tangerine juice,,,
-156,crumbled blue cheese,blue cheese,,,
+156,crumbled blue cheese,blue cheese,,,dairy
 157,dry wine,dry wine,wine vinegar,,
 158,thai basil,basil,,,
 159,butterscotch chips,,,,
 160,nori,,,,vegetable
 161,cake mix,,,,
-162,no ingredient,,,,
 163,poultry seasoning,,,,
 164,sorghum syrup,,,,
 165,smoked mozzarella,soft cheese,,,
@@ -169,8 +168,8 @@
 167,brown rice vinegar,,,,
 168,pitted cherries,,,,
 169,barley,,,,
-170,onion,chives,shallot,leek,vegetable
-172,cream cheese frosting,,,,
+170,onion,shallot,,,vegetable
+172,cream cheese frosting,,,,dairy
 173,bean,,,,
 174,chayotes,squash,,,vegetable
 175,nuoc mam,,,,
@@ -182,11 +181,11 @@
 181,bucatini,pasta,,,
 182,cider vinegar,,,,
 183,marmalade,,,,
-184,cinnamon ice cream,ice cream,,,
+184,cinnamon ice cream,ice cream,,,dairy
 185,scotch whisky,,,,meat
 186,biscotti,,,,
 187,chili pepper,,,,vegetable
-188,smoked gouda cheese,medium cheese,,,
+188,smoked gouda cheese,medium cheese,,,dairy
 189,daikon,,,,
 190,taco seasoning mix,,,,
 191,rotelle,pasta,,,
@@ -216,7 +215,7 @@
 215,ginger ale,,,,
 216,pear nectar,,,,
 217,green grape,grapes,,,fruit
-218,vanilla ice cream,,,,
+218,vanilla ice cream,,,,dairy
 219,tamarind pulp,,,,fruit
 220,grenadine syrup,,,,
 221,mincemeat,,,,
@@ -293,7 +292,7 @@
 293,cannellini beans,bean,,,vegetable
 294,dry cider,,,,
 295,galliano,liqueur,,,
-296,dry milk powder,,,,
+296,dry milk powder,milk powder,,,dairy
 297,almond butter,,,,
 298,pepper,black pepper,,,vegetable
 299,queso fresco,cottage cheese,,,
@@ -314,12 +313,11 @@
 314,chinese plum sauce,,,,
 315,baby lima beans,kale,,,vegetable
 316,lime juice,lemon juice,dry wine,,
-317,peeled shrimp,,,,seafood
 318,sausage meat,,,,meat
 319,lavender,,,,
 320,orange,,,,
 321,raspberry,,,,fruit
-322,cheese ravioli,,,,
+322,cheese ravioli,,,,dairy
 323,pickling cucumbers,,,,
 324,pico de gallo,,,,
 325,cornflakes,,,,
@@ -328,7 +326,7 @@
 328,pomelo,,,,fruit
 329,avocado leaves,,,,vegetable
 330,pomegranate molasses,,,,fruit
-331,cottage cheese,,,,
+331,cottage cheese,,,,dairy
 332,spaghetti,pasta,,,
 333,tuna in oil,,,,fish
 334,raisin,,,,fruit
@@ -357,7 +355,7 @@
 357,celery,,,,vegetable
 358,vegetable,,,,vegetable
 359,brown sugar,sugar,sugar,,fruit
-360,ricotta cheese,curd cheese,,,
+360,ricotta cheese,curd cheese,,,dairy
 361,mustard greens,,,,vegetable
 362,wasabi powder,,,,
 363,oregano,,,,
@@ -393,7 +391,7 @@
 393,blackberry,,,,fruit
 394,cranberry sauce,,,,
 395,dandelion greens,,,,vegetable
-396,aged manchego cheese,hard cheese,,,
+396,aged manchego cheese,hard cheese,,,dairy
 397,rice wine vinegar,,,,
 398,mayonnaise,,,,
 399,salted peanuts,nuts,peanut,,
@@ -412,7 +410,7 @@
 413,lettuce,,,,vegetable
 414,shiitake mushroom caps,,,,vegetable
 415,pork chops,,,,meat
-416,ice cream,,,,
+416,ice cream,,,,dairy
 417,tuna in water,,,,fish
 418,vegetable stock,,,,
 419,chia,,,,
@@ -434,9 +432,9 @@
 435,fennel seeds,,,,vegetable
 436,cheddar,hard cheese,,,
 437,lamb shoulder chops,,,,meat
-438,hamburger,,,,
+438,hamburger,,,,meat
 439,tvp,protein powder,,,
-440,milk chocolate chips,,,,
+440,milk chocolate chips,,,,dairy
 441,coconut milk powder,,,,
 442,brown rice,rice,,,
 443,orange peel,,,,
@@ -449,7 +447,7 @@
 450,salted pistachios,pistachio,,,
 451,scotch bonnet chile,bell pepper,,,vegetable
 452,fig,,,,fruit
-453,buttermilk,,,,fish
+453,buttermilk,,,,dairy
 454,pappardelle,pasta,,,
 455,pumpernickel bread,,,,
 456,frozen peaches,,,,
@@ -459,7 +457,7 @@
 460,beef jerky,,,,meat
 461,arrowroot,,,,fruit
 462,wonton wrappers,,,,
-463,pork rib chops,pork chops,,,fruit
+463,pork rib chops,pork chops,,,meat
 464,bird chile,chili pepper,,,vegetable
 465,rock shrimp,shrimp,,,seafood
 466,asian sweet chili sauce,chili sauce,,,
@@ -502,13 +500,13 @@
 503,cacao powder,,,,
 504,veal knuckle,,,,meat
 505,pizza sauce,,,,
-506,milk chocolate,,,,
-507,sour cream,,,,
+506,milk chocolate,,,,dairy
+507,sour cream,,,,dairy
 508,lamb chops,,,,meat
 509,tarama,,,,
 510,chicken bones,,,,poultry
 511,sesame oil,,,,
-512,monterey jack cheese,hard cheese,,,
+512,monterey jack cheese,hard cheese,,,dairy
 513,olive oil spray,,,,
 514,roma tomatoes,,,,
 515,cookie crumbs,,,,
@@ -517,13 +515,13 @@
 518,leafy greens,,,,vegetable
 519,bow,,,,
 520,canned chipotle,chipotle,,,vegetable
-521,acini di pepe,pasta,,,cereal
+521,acini di pepe,pasta,,,
 522,corn bread crumbs,,,,
 523,rice,,,,
 524,bourbon liqueur,liqueur,,,
 525,capers,,,,vegetable
 526,orange juice,,,,
-527,pasta shells,pasta,,,seafood
+527,pasta shells,pasta,,,
 528,marrow bones,,,,
 529,almond liqueur,,,,
 530,kalamata olives,olives,,,
@@ -565,7 +563,7 @@
 566,pita,,,,
 567,sea salt,salt,,,
 568,meat stock,,,,meat
-569,dark ale,beer,,,fish
+569,dark ale,beer,,,
 570,chipotle chili,chili pepper,,,vegetable
 571,couscous,,,,
 572,mesclun,,,,vegetable
@@ -583,7 +581,7 @@
 584,cider,,,,
 585,parsley,cilantro,,,vegetable
 586,fat,,,,
-587,chocolate ice cream,,,,
+587,chocolate ice cream,,,,dairy
 588,radicchio leaves,,,,vegetable
 589,coconut milk,,,,
 590,corn kernels,,,,vegetable
@@ -618,7 +616,7 @@
 619,phyllo pastry,,,,
 620,capon,chicken,,,poultry
 621,vanilla sugar,,,,
-622,gouda cheese,medium cheese,,,
+622,gouda cheese,medium cheese,,,dairy
 623,toasted baguette,,,,
 624,beef sirloin,,,,meat
 625,hash browns,,,,
@@ -641,7 +639,7 @@
 642,vanilla cream,,,,
 643,aged vinegar,vinegar,,,
 644,karo,,,,
-645,hanger steak,,,,
+645,hanger steak,steak,,,meat
 646,potato chips,,,,
 647,chocolate,,,,
 648,quinoa,,,,
@@ -650,16 +648,16 @@
 651,sweet relish,relish,,,
 652,pork belly,pork,,,meat
 653,cream sherry,,,,
-654,fontina cheese,soft cheese,,,
+654,fontina cheese,soft cheese,,,dairy
 655,shao hsing wine,,,,
-656,sirloin tip,,,,
+656,sirloin tip,,,,meat
 657,ketchup,,,,
 658,honey,,,,
 659,mint syrup,,,,
 660,mango,,,,fruit
 661,black-eyed peas,,,,vegetable
 662,lemon grass,,,,fruit
-663,blue cheese dressing,,,,
+663,blue cheese dressing,,,,dairy
 664,egg noodles,noodles,,,egg
 665,green tea,,,,
 666,yu choy,,,,
@@ -682,7 +680,7 @@
 683,dried rice noodles,,,,
 684,cracker crumbs,,,,meat
 685,bittersweet chocolate,chocolate,,,
-686,campanelle,pasta,,,seafood
+686,campanelle,pasta,,,
 687,potato gnocchi,,,,
 688,glaze,,,,
 689,pesto,,,,
@@ -720,16 +718,16 @@
 722,foie gras,,,,
 723,kasha,,,,
 724,guajillo chili,,,,spice
-725,standing rib roast,rib roast,,,
+725,standing rib roast,rib roast,,,meat
 726,lamb,,,,meat
 727,thyme,basil,marjoram,oregano,greens
 728,black mission figs,fig,,,fruit
 729,gaeta olives,olives,,,
 730,cod,,,,fish
 731,madeleine,,,,
-732,chihuahua cheese,soft cheese,,,
+732,chihuahua cheese,soft cheese,,,dairy
 733,orange juice concentrate,,,,
-734,milk,cream,evaporated milk,half-and-half,
+734,milk,cream,evaporated milk,half-and-half,dairy
 735,food coloring,,,,
 736,palm sugar,,,,
 737,soppressata,sausage,ham,,meat
@@ -770,17 +768,17 @@
 772,ground beef,,,,meat
 773,cherry preserves,,,,fruit
 774,puff pastry,,,,
-775,pecorino cheese,hard cheese,,,
+775,pecorino cheese,hard cheese,,,dairy
 776,gluten,,,,
 777,brown mustard seeds,mustard seeds,,,
 778,wheat starch,,,,
 779,meringue,,,,
-780,pepper jack cheese,hard cheese,,,vegetable
+780,pepper jack cheese,hard cheese,,,dairy
 781,orange roughy fillet,,,,
 782,duck egg,,,,poultry
 783,meat glaze,,,,meat
 784,soy glaze,,,,
-785,rib,,,,
+785,rib,,,,meat
 786,shell pasta,,,,
 787,artichoke,,,,vegetable
 788,skate wing,,,,
@@ -794,7 +792,7 @@
 796,beef rib roast,,,,meat
 797,mixed nuts,nuts,,,
 798,limeade concentrate,,,,
-799,parmigiano reggiano cheese,hard cheese,,,
+799,parmigiano reggiano cheese,hard cheese,,,dairy
 800,kimchi juice,,,,
 802,dried currants,,,,
 803,edamame beans,soybeans,,,vegetable
@@ -831,7 +829,7 @@
 834,virginia ham,ham,,,meat
 835,mixed greens,,,,vegetable
 836,vegetable juice,,,,
-837,round steak,steak,,,
+837,round steak,steak,,,meat
 838,lima beans,bean,,,vegetable
 839,merlot,red wine,,,
 840,turnip,,,,vegetable
@@ -853,7 +851,7 @@
 856,potato flour,,,,
 857,crawfish,,,,
 858,apricot jam,jam,,,
-859,loin,,,,
+859,loin,,,,meat
 860,rigatoni,pasta,,,
 861,gelatin,,,,
 862,endive,,,,vegetable
@@ -866,7 +864,7 @@
 869,raspberry juice,,,,
 870,pomegranate,,,,fruit
 871,snapper,,,,fish
-872,butter,margarine,shortening,vegetable oil,fruit
+872,butter,margarine,shortening,vegetable oil,dairy
 873,radicchio,,,,vegetable
 874,garlic sauce,,,,
 875,dried chipotle pepper,chili pepper,,,vegetable
@@ -884,12 +882,12 @@
 887,catfish,,,,fish
 888,dried plum,,,,fruit
 889,licorice root,,,,
-890,provolone cheese,hard cheese,,,
+890,provolone cheese,hard cheese,,,dairy
 891,chilled seltzer,,,,
 892,soybean paste,,,,
 893,chorizo,ham,,,meat
 894,oyster,,,,vegetable
-895,rib roast,,,,
+895,rib roast,,,,meat
 896,ginger beer,,,,
 897,grapefruit,,,,fruit
 898,turmeric,,,,fish
@@ -945,7 +943,7 @@
 948,sweet soy sauce,soy sauce,,,
 949,lasagne,,,,
 950,annatto seeds,,,,
-951,flank steak,,,,
+951,flank steak,steak,,,meat
 952,tapioca starch,,,,
 953,atta,flour,,,
 955,almond flour,flour,,,
@@ -973,7 +971,7 @@
 977,cranberry juice concentrate,,,,
 978,strawberry jam,jam,,,
 979,food cake,,,,
-980,vanilla yogurt,yogurt,,,fish
+980,vanilla yogurt,yogurt,,,dairy
 981,powdered sugar,,,,
 982,gorgonzola,,,,
 983,pork sausages,sausage,,,meat
@@ -1038,12 +1036,12 @@
 1042,veal stew meat,beef stew meat,,,meat
 1043,stewing beef,,,,meat
 1044,chartreuse liqueur,liqueur,,,
-1045,stilton cheese,mold cheese,,,
+1045,stilton cheese,mold cheese,,,dairy
 1046,filling,,,,
 1047,sweet vermouth,dry wine,,,
 1048,waxy potatoes,potato,,,
 1049,pitted prunes,,,,fruit
-1050,milk powder,,,,
+1050,milk powder,,,,dairy
 1051,tamari soy sauce,soy sauce,,,
 1052,liquid,,,,
 1053,mozzarella balls,soft cheese,,,
@@ -1066,7 +1064,7 @@
 1070,capellini,pasta,,,
 1071,quail,chicken,,,poultry
 1072,broccoli rabe,,,,vegetable
-1073,goat cheese,soft cheese,,,
+1073,goat cheese,soft cheese,,,dairy
 1074,flour tortillas,tortillas,,,
 1075,pasilla chiles,chili pepper,,,vegetable
 1076,pomegranate juice,,,,
@@ -1086,8 +1084,8 @@
 1090,soy milk,,,,
 1091,tomatillo,,,,vegetable
 1092,marnier,liqueur,,,
-1093,rib eye steak,steak,,,vegetable
-1094,cheese sauce,,,,
+1093,rib eye steak,steak,,,meat
+1094,cheese sauce,,,,dairy
 1095,crab boil,,,,vegetable
 1096,marsala wine,dry wine,,,
 1097,rice paper,,,,
@@ -1096,13 +1094,13 @@
 1101,baguette,,,,
 1102,vin santo,dessert wine,,,
 1103,savoy cabbage,,,,vegetable
-1104,kefir,buttermilk,,,
+1104,kefir,buttermilk,,,dairy
 1105,veal,beef,,,meat
 1106,plum vinegar,,,,
 1107,linguini,pasta,,,
 1108,sunflower oil,,,,
 1109,kitchen bouquet,,,,
-1110,whipped cream cheese,soft cheese,,,
+1110,whipped cream cheese,soft cheese,,,dairy
 1111,molasses,,,,
 1112,custard,,,,
 1113,truffle butter,,,,
@@ -1185,11 +1183,11 @@
 1190,soybeans,,,,vegetable
 1191,fenugreek seeds,anise,,,
 1192,pearl onions,,,,
-1193,soy yogurt,greek yogurt,,,
+1193,soy yogurt,,,,
 1194,persimmon,,,,fruit
 1195,yellow rice,rice,,,
 1196,zucchini blossoms,,,,
-1197,roasting chickens,,,,
+1197,roasting chickens,,,,poultry
 1198,white pepper,black pepper,,,vegetable
 1199,cherry peppers,,,,fruit
 1200,tagliatelle,pasta,,,
@@ -1198,9 +1196,9 @@
 1203,wakame,seaweed,,,vegetable
 1204,waffle,,,,
 1205,cannoli shells,,,,seafood
-1206,rotini,pasta,,,spice
+1206,rotini,pasta,,,
 1207,orange bitters,,,,
-1208,gruyère cheese,medium cheese,,,
+1208,gruyère cheese,medium cheese,,,dairy
 1209,curly endive,endive,,,vegetable
 1210,nutmeg,,,,
 1211,nigella,,,,
@@ -1209,11 +1207,11 @@
 1214,mulato chiles,poblano chiles,chili pepper,,
 1215,nut,nuts,,,
 1216,bonito flakes,,,,
-1217,bone-in ribs,ribs,,,
+1217,bone-in ribs,ribs,,,meat
 1218,baby kale,kale,,,vegetable
 1219,collard leaves,collard,,,
 1220,poured fondant,,,,
-1221,herb cheese,medium cheese,,,
+1221,herb cheese,medium cheese,,,dairy
 1222,limoncello,liqueur,,,
 1223,coffee ice cream,ice cream,,,
 1224,dried apple,,,,fruit
@@ -1238,13 +1236,12 @@
 1243,chutney,,,,
 1244,lamb loin chops,,,,meat
 1245,baking mix,,,,
-1246,goose fat,,,,
+1246,goose fat,,,,poultry
 1247,red quinoa,quinoa,,,
 1248,ham steak,,,,meat
 1249,smoked paprika,paprika,,,
 1250,polenta,,,,
 1251,chili seasoning mix,,,,
-1252,york strip,strip steak,,,
 1253,green garlic,,,,vegetable
 1254,dried dates,,,,
 1255,graham cracker crumbs,,,,
@@ -1257,7 +1254,7 @@
 1262,japanese rice,rice,,,
 1263,orange marmalade,,,,
 1264,clarified butter,butter,,,
-1265,crepe,pancake,,,fish
+1265,crepe,pancake,,,
 1266,rock salt,salt,,,
 1267,absinthe,,,,
 1268,tomatoes in oil,,,,
@@ -1265,7 +1262,7 @@
 1270,guanabana,,,,
 1271,garlic paste,,,,vegetable
 1272,amontillado sherry,dry wine,,,
-1273,soft goat cheese,soft cheese,,,
+1273,soft goat cheese,soft cheese,,,dairy
 1274,dried sardines,,,,fish
 1275,lavender honey,honey,,,
 1276,curaÃ§ao liqueur ,liqueur ,,,
@@ -1285,7 +1282,7 @@
 1290,treviso radicchio,chicory,,,vegetable
 1291,kidney,,,,
 1292,watermelon,,,,
-1293,crumbled ricotta cheese,,,,
+1293,crumbled ricotta cheese,,,,dairy
 1294,fermented black beans,,,,vegetable
 1295,hoagie rolls,bread,,,
 1296,pheasant,chicken,,,poultry
@@ -1295,7 +1292,7 @@
 1300,tea,,,,spice
 1301,pickle juice,,,,
 1302,orange liqueur,,,,
-1304,manchego cheese,hard cheese,,,
+1304,manchego cheese,hard cheese,,,dairy
 1305,silver tequila,,,,
 1306,veal shanks,lamb shanks,,,meat
 1307,spring roll wrappers,,,,
@@ -1307,7 +1304,6 @@
 1313,manicotti,pasta,,,
 1314,champagne,,,,
 1315,pie shell,,,,
-1316,plantains,,,,
 1317,chocolate sauce,,,,
 1318,hemp seeds,,,,
 1319,rose water,,,,
@@ -1329,7 +1325,7 @@
 1335,coconut rum,,,,fruit
 1336,cherry pie filling,,,,fruit
 1337,gingersnap cookies,,,,
-1338,banana leaves,,,,fish
+1338,banana leaves,,,,
 1339,meat loaf,,,,meat
 1340,dried chili pepper,,,,vegetable
 1341,tasso,ham,,,meat
@@ -1337,14 +1333,14 @@
 1343,tapioca flour,,,,
 1344,lemon pepper,black pepper,,,vegetable
 1345,seed,,,,
-1346,hen,chicken,,,vegetable
+1346,hen,chicken,,,poultry
 1347,confit,,,,
 1348,salami,,,,meat
 1349,smoked turkey,,,,meat
 1350,toast points,,,,
 1351,sauerkraut juice,,,,seafood
 1352,ziti,pasta,,,
-1353,havarti cheese,soft cheese,,,
+1353,havarti cheese,soft cheese,,,dairy
 1354,mint chocolate chip ice cream,ice cream,,,
 1355,lime peel,,,,
 1356,dried porcini,,,,vegetable
@@ -1408,10 +1404,10 @@
 1415,pasilla,chile pepper,,,vegetable
 1416,risotto,,,,
 1417,banana peppers,chili pepper,,,vegetable
-1418,steak,,,,
+1418,steak,,,,meat
 1419,wheat germ,,,,
 1420,pomegranate seeds,,,,fruit
-1421,whipping cream,,,,
+1421,whipping cream,,,,dairy
 1422,porcini,mushroom,,,vegetable
 1423,apple brandy,,,,
 1424,udon noodles,noodles,,,
@@ -1426,7 +1422,7 @@
 1433,gyoza wrappers,,,,
 1434,anchovy paste,,,,fish
 1435,plum jam,jam,,,
-1436,blue cheese,mold cheese,,,
+1436,blue cheese,mold cheese,,,dairy
 1437,poblano chilies,chili pepper,,,vegetable
 1438,veal rib chops,,,,meat
 1439,chocolate cake mix,,,,
@@ -1441,7 +1437,7 @@
 1448,sugarcane,,,,
 1449,peanut oil,,,,
 1450,baby greens,greens,,,vegetable
-1451,pork sirloin,pork tenderloin,pork loin,,fruit
+1451,pork sirloin,pork tenderloin,pork loin,,meat
 1452,dry vermouth,dry wine,,,
 1453,gingersnap,,,,
 1454,cane vinegar,vinegar,,,
@@ -1511,12 +1507,12 @@
 1518,prosecco,,,,
 1519,sweet sherry,dry wine,,,
 1520,sweetbread,,,,
-1521,romano cheese,hard cheese,,,
+1521,romano cheese,hard cheese,,,dairy
 1522,russet potatoes,potato,,,
 1523,gremolata,,,,
 1524,potato starch,,,,
 1525,pearl tapioca,,,,
-1526,porterhouse steak,steak,t-bone,,
+1526,porterhouse steak,steak,t-bone,,meat
 1527,bran,,,,
 1528,sanding sugar,sugar,,,
 1529,chicken wing drummettes,,,,poultry
@@ -1524,7 +1520,7 @@
 1531,mixed vegetables,,,,vegetable
 1532,eau de vie,brandy,,,
 1533,spaghetti sauce seasoning mix,,,,
-1534,grilled chicken,chicken,,,fruit
+1534,grilled chicken,chicken,,,poultry
 1535,peel,,,,
 1536,wood ear mushrooms,mushroom,,,
 1537,dried mushrooms,,,,
@@ -1532,7 +1528,7 @@
 1539,pimento,chile pepper,,,vegetable
 1540,burdock,,,,
 1541,char siu,roast pork,,,meat
-1542,strained yogurt,greek yogurt,,,
+1542,strained yogurt,greek yogurt,,,dairy
 1543,lemongrass,,,,vegetable
 1544,shortcake,,,,
 1545,beef steak,steak,,,meat
@@ -1543,7 +1539,7 @@
 1550,almond extract,,,,
 1551,rapeseed oil,oil,,,
 1552,dried shrimp,,,,seafood
-1553,swiss cheese,medium cheese,,,
+1553,swiss cheese,medium cheese,,,dairy
 1554,raita,,,,
 1555,fish stock,,,,fish
 1556,black ham,ham,,,meat
@@ -1567,7 +1563,7 @@
 1575,ripe olives,olives,,,
 1576,beef stew meat,,,,meat
 1577,scrod,,,,
-1578,baby ribs,ribs,,,
+1578,baby ribs,ribs,,,meat
 1579,raspberry sauce,,,,
 1580,crouton,,,,
 1581,pappadams,pita,,,
@@ -1599,7 +1595,7 @@
 1607,tomato juice,,,,
 1608,ritz crackers,crackers,,,
 1609,oxtail,beef,,,meat
-1610,penne rigate,pasta,,,vegetable
+1610,penne rigate,pasta,,,
 1611,crema,,,,
 1612,smoked ham,,,,meat
 1613,vermicelli ,noodles,,,fish
@@ -1624,7 +1620,7 @@
 1632,banana liqueur,,,,
 1633,chiffonade,,,,meat
 1634,porter,,,,
-1635,asiago cheese,hard cheese,,,
+1635,asiago cheese,hard cheese,,,dairy
 1636,shiitake,,,,vegetable
 1637,tostada,,,,
 1638,mung bean sprouts,,,,
@@ -1659,14 +1655,13 @@
 1667,cognac,,,,
 1668,stew meat,,,,meat
 1669,yukon gold potato,potato,,,vegetable
-1670,string cheese,mold cheese,,,
+1670,string cheese,mold cheese,,,dairy
 1671,hazelnut oil,oil,,,
 1672,deveined shrimp,shrimp,,,seafood
 1673,dried peach,,,,fruit
-1674,shelled shrimp,hrimp,,,seafood
 1675,orange bell pepper,bell pepper,,,vegetable
 1676,brat,,,,
-1677,colby cheese,medium cheese,,,
+1677,colby cheese,medium cheese,,,dairy
 1678,meyer lemon peel,,,,
 1679,pickled onion,,,,vegetable
 1680,sherry,,,,
@@ -1674,9 +1669,9 @@
 1682,garlic oil,oil,,,
 1683,sprite,,,,
 1684,trout,,,,fish
-1685,carp,,,,
+1685,carp,,,,fish
 1686,bouquet garni,,,,
-1687,licor,,,,
+1687,licor,liqueur,,,
 1688,baby carrots,carrots,,,
 1689,chicken strips,,,,poultry
 1690,evaporated milk,,,,
@@ -1706,7 +1701,7 @@
 1714,onion salt,,,,
 1715,brown basmati rice,rice,,,
 1716,dried fettuccine,,,,
-1717,muenster cheese,medium cheese,,,
+1717,muenster cheese,medium cheese,,,dairy
 1718,dried cranberries,,,,fish
 1719,mussel,,,,
 1720,loin pork chops,,,,meat
@@ -1734,7 +1729,7 @@
 1742,agave tequila,,,,
 1743,pizza shells,,,,seafood
 1744,brown rice noodles,rice noodles,,,
-1745,beef bones,,,,fish
+1745,beef bones,,,,meat
 1746,dried oregano,,,,
 1747,prune,,,,
 1748,blue crabs,,,,seafood
@@ -1743,7 +1738,7 @@
 1751,flavoring,,,,
 1752,celery stick,celery,,,vegetable
 1753,chili beans,bean,,,vegetable
-1754,steak sauce,,,,
+1754,steak sauce,,,,meat
 1755,hot bean paste,bean paste,,,
 1756,brazil nuts,nuts,,,
 1757,turbot,,,,fish
@@ -1754,7 +1749,7 @@
 1762,preserved lemon,,,,fruit
 1763,seasoning mix,,,,
 1764,mango nectar,,,,spice
-1765,shell steak,,,,
+1765,shell steak,,,,meat
 1766,smoked mackerel,,,,fish
 1767,min,,,,
 1768,burgundy,,,,
@@ -1771,7 +1766,7 @@
 1779,borage,,,,
 1780,fideos,noodles,,,
 1781,purple potatoes,potato,,,
-1782,skirt steak,,,,
+1782,skirt steak,,,,meat
 1783,yellow bell pepper,bell pepper,,,vegetable
 1784,peach preserves,,,,fruit
 1785,breadstick,,,,
@@ -1792,7 +1787,7 @@
 1800,jerk season,,,,
 1801,chocolate syrup,,,,
 1802,saffron,,,,
-1803,herbed goat cheese,soft cheese,,,
+1803,herbed goat cheese,soft cheese,,,dairy
 1804,vanilla pudding,,,,sauce
 1805,sweet sour mix,,,,
 1806,dried chickpeas,,,,
@@ -1825,7 +1820,7 @@
 1833,sauvignon blanc,white wine,,,
 1834,spare rib,pork ribs,,,meat
 1835,parsnip,,,,vegetable
-1836,halloumi cheese,medium cheese,,,
+1836,halloumi cheese,medium cheese,,,dairy
 1837,raisin bread,bread,,,
 1838,shrimp paste,,,,seafood
 1839,spice,,,,
@@ -1846,7 +1841,7 @@
 1854,beef soup bones,,,,meat
 1855,mirin,,,,
 1856,hot chili paste,,,,
-1857,creamed spinach,,,,vegetable
+1857,creamed spinach,,,,
 1858,powdered garlic,,,,vegetable
 1859,chocolate liqueur,,,,
 1860,capellini ,pasta,,,
@@ -1855,7 +1850,7 @@
 1863,beef chuck roast,beef,,,meat
 1864,french dressing,,,,
 1865,tarragon leaves,,,,
-1866,jack cheese,hard cheese,,,
+1866,jack cheese,hard cheese,,,dairy
 1867,flavored vodka,vodka,,,
 1868,sofrito,,,,
 1869,tea bags,,,,
@@ -1874,7 +1869,7 @@
 1882,peppermint extract,,,,
 1883,quince paste,,,,fruit
 1884,smoked ham hocks,,,,meat
-1885,cheese tortellini,cheese ravioli,,,
+1885,cheese tortellini,cheese ravioli,,,dairy
 1886,yukon gold potatoes,potato,,,
 1887,turbinado,sugar,,,
 1888,stuffing,filling,,,vegetable
@@ -1885,11 +1880,10 @@
 1893,chestnut spread,,,,spice
 1894,ginger juice,,,,
 1895,coconut flour,,,,vegetable
-1896,apple butter,,,,fruit
+1896,apple butter,,,,
 1897,pullman loaf,,,,
 1898,plum sauce,,,,
 1899,powdered milk,,,,
-1900,persimmons,,,,
 1901,smoked cheddar,hard cheese,,,
 1902,tomato sauce,,,,
 1903,pickling spices,,,,
