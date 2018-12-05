@@ -43,7 +43,8 @@ def return_recipes(calories=2500,
                    n_additional_ingredients=4,
                    grocery=[],
                    user_score={},
-                   sort_field = 'title'):
+                   sort_field = 'title',
+                   userspecs='n'):
 ###############
 ################
 ################
@@ -79,7 +80,8 @@ def return_recipes(calories=2500,
     garnish=['parsley', 'dried parsley', 'cilantro', 'cilantro leaves', 'dill',
              'celery leaves', 'chives', 'chocolate chips', 'sesame', 'black sesame seeds', 'sesame seeds']
     # separate ingredients from non-ingredients
-    non_ingredients=non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'recipe_text', 'ingredient_txt','image', 'image_link']
+    non_ingredients=['meal','title','calories','protein','carbs','fats','sodium','cuisine', 'complexity', 'recipe_text', 'ingredient_txt', 'image', 'image_link', 'breakfast', 'lunch', 'dinner', 'drink', 'snack']
+  
     non_ingredients.extend(spices)
     group_keys=['pasta', 'mold cheese', 'soft cheese', 'brined cheese', 'medium cheese', 'hard cheese', 'cottage cheese', 'dry wine',
                 'liquer', 'white wine', 'red wine']
@@ -118,24 +120,36 @@ def return_recipes(calories=2500,
     else:
         options=data[(data.meal==meal_type)&
                        (data.complexity<=complexity)]
-
     if 'all' not in cuisine:
         options=options[options.cuisine.isin(cuisine)]
 
+    print("shape", options.shape)
 
-
+    #filter based on userspecs
+    if userspecs=='vg':
+        meat_ingr=list(ingredients[ingredients['food type'].isin(['meat', 'poultry'])]['stem'])
+        to_remove=[i for i in options.index if np.sum(options.loc[i][meat_ingr])>0]
+        options.drop(to_remove, inplace=True)
+    elif userspecs=='ve':
+        meat_ingr=list(ingredients[ingredients['food type'].isin(['meat', 'poultry', 'fish', 'dairy', 'egg', 'seafood'])]['stem'])        
+        to_remove=[i for i in options.index if np.sum(options.loc[i][meat_ingr])>0]
+        options.drop(to_remove, inplace=True)
+     
     #filter based on grocery
 
     # drop columns with unused ingredients
-    ingredients=options.drop(non_ingredients, axis=1).columns
-    options.drop([x for x in ingredients if sum(options[x])==0], axis=1, inplace=True)
+    ingr=[x for x in options.columns if x not in non_ingredients]
+    zero_column=[x for x in ingr if sum(options[x])==0]
+    #print("zero_column", len(zero_column))
+
+    options.drop(zero_column, axis=1, inplace=True)
 
     #update ingredients
-    ingredients=options.drop(non_ingredients, axis=1).columns
+    ingr=[x for x in options.columns if x not in non_ingredients]
 
     ## products outside the groccery list
 
-    needed=[x for x in ingredients if x not in grocery]
+    needed=[x for x in ingr if x not in grocery]
 
     # Keep only the recipes if the number of additional key ingredients doesnt exceed n
     sums=options[needed].sum(axis=1)
@@ -171,7 +185,7 @@ def return_recipes(calories=2500,
     rec_list = []
     n = len(recommendation)
     rec_sorted = recommendation.sort_values(by=[sort_field])
-    print(len(rec_sorted['image_link']))
+    print("rec_sorted", len(rec_sorted['image_link']))
     for i in range(n):
         rec_list.append(RecListTableItem(rec_sorted.iloc[i]['title'],rec_sorted.iloc[i]['calories'],rec_sorted.iloc[i]['fats'],rec_sorted.iloc[i]['carbs'],rec_sorted.iloc[i]['protein'],rec_sorted.iloc[i]['products to add'], rec_sorted.iloc[i]['nutrition penalty'], rec_sorted.iloc[i]['user score']))
     return (rec_sorted) #(RecListTable(rec_list, html_attrs={'align':'center', 'class':'table table-hover'}))

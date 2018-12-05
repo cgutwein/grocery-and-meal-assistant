@@ -155,7 +155,7 @@ def recipes():
             meal_type = form.meal_type.data
             sort_field = form.sorting_field.data
             if current_user.daily_cal:
-                recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field)
+                recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field, userspecs=current_user.restrictions)
             else:
                 recs = "Please complete your user profile to see recipe recommendations."
             if len(recs) == 0:
