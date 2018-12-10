@@ -30,20 +30,11 @@
       <!-- <p align="center"><a href="#" role="button" class="btn btn-success">Create New List</a></p> -->
       <h5 align="center">Your Saved Lists</h5>
     	<p align="center">
-        <table align="center">
-          {% if lists_table %}
           {{lists_table}}
-        {% else %}
-          <tr>
-            <td><u>My First Shopping List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
-            <tr><td><u>Budget Friendly</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
-            <tr><td><u>Dinner Party List</u></td><td><a href="#" role="button" class="btn btn-link">Load</a></td><td><a href="#" role="button" class="btn btn-link">Delete</a></td></tr>
-        {% endif %}
-        </table>
 	    </p>
     </div>
   <div class ="col-sm-6">
-    <h5 align="center">Current List - {{current_user.current_list}}</h5><br>
+    <h5 align="center" style="font-size: 20px;">Current List - <font color="#333399"><u>{{current_user.current_list}}</u></font></h5><br>
     <p align="center">
       {{mylist}}</p>
     </div>

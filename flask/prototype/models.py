@@ -112,13 +112,13 @@ class GroceryList:
 
 ## Table for ingredients from search
 class IngrTable(Table):
-    name = Col('Ingredient')
-    but_add = ButtonCol('+', 'add_food_item', url_kwargs = dict(food_item = 'name'))
+    name = Col('Ingredient', th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
+    but_add = ButtonCol('+', 'add_food_item', url_kwargs = dict(food_item = 'name'), th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
 
 ## Table for active grocery list
 class ListTable(Table):
-    name = Col('Ingredient')
-    but_add = ButtonCol('-', 'del_food_item', url_kwargs = dict(food_item = 'name'))
+    name = Col('Ingredient', th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
+    but_add = ButtonCol('-', 'del_food_item', url_kwargs = dict(food_item = 'name'), th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
 
 ## Another for ingredients
 class Ingr(object):
@@ -128,9 +128,9 @@ class Ingr(object):
 
 ## Table for all user's grocery lists
 class GrocListTable(Table):
-    name = Col('ListName')
-    but_load = ButtonCol('Load', 'f_load_list', url_kwargs = dict(f_list = 'name'))
-    but_del = ButtonCol('Delete', 'f_del_list', url_kwargs = dict(f_list = 'name'))
+    name = Col('ListName', th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
+    but_load = ButtonCol('Load', 'f_load_list', url_kwargs = dict(f_list = 'name'), th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
+    but_del = ButtonCol('Delete', 'f_del_list', url_kwargs = dict(f_list = 'name'), th_html_attrs={"style": "text-align: center;"}, td_html_attrs={"align": "center"})
 
 ## Another for ingredients
 class GrocListTableItem(object):
@@ -160,4 +160,4 @@ class RecListTableItem(object):
         self.protein = protein
         self.prods = prods
         self.nutScore = nutScore
-        self.user_score = user_score  
+        self.user_score = user_score
