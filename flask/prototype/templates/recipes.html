@@ -1,6 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<style>
+.rating {
+    float:left;
+    width:110px;
+}
+.rating span { float:right; position:relative; }
+.rating span input {
+    position:relative;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating span label {
+    display:inline-block;
+    position:relative;
+    width:16px;
+    height:16px;
+    color:#FFF;
+    background:#ccc;
+    margin-right:0px;
+    line-height:20px;
+    border-radius:60%;
+    -webkit-border-radius:60%;
+}
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label {
+    background:#6BFF33;
+    color:#FFF;
+}
+
+</style>
+
+<script src="https://ajax.google apis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    
+$(document).ready(function(){
+    var user_score = {};
+    
+    // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+
+    $(".rating input").click(function () {  
+        //console.log(this, $(this).parent().find('name'))
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+        user_score[this.name]=this.value;
+        console.log(user_score)
+    });
+    
+
+   
+}); 
+    
+</script>
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2"></div>
@@ -64,12 +124,14 @@
 				</thead>
 				<tbody>
 			{% for key, value in recs.iterrows() %}
-			<tr data-toggle="collapse" data-target="#{{key}}" class="accordion-toggle" role="button" aria-expanded="false" aria-controls="{{key}}">
+                    <script>"{{key}}"</script>
+			<tr data-toggle="collapse" data-target="#{{key}}" class="accordion-toggle" role="button" aria-expanded="true" aria-controls="{{key}}">
 				<td style="font-size: 20px;"><font color="#333399">{{value['title']}}</font></td>
 				<td>{{value['calories']}}</td>
 				<td>{{value['protein']}}</td>
 				<td>{{value['fats']}}</td>
 				<td>{{value['carbs']}}</td>
+               
 			</tr>
 			<tr>
 				<td colspan="5">
@@ -79,9 +141,16 @@
 						<font color="#333399"<b> New Ingredients to Add to List:</b> <u>{{value['products to add']}}</u></font>
 						<hr>
 						<b> Recipe Instructions: </b> {{value['recipe_text']}}
-						<div class="rating">
-							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-						</div>
+                    <br>
+
+                        
+                        <div class="rating">
+                            <span><input type="radio" name={{key}} id=str5+{{key}} value="5"><label for=str5+{{key}}></label></span>                            
+                            <span><input type="radio" name={{key}} id=str4+{{key}} value="4"><label for=str4+{{key}}></label></span>
+                            <span><input type="radio" name={{key}} id=str3+{{key}} value="3"><label for=str3+{{key}}></label></span>
+                            <span><input type="radio" name={{key}} id=str2+{{key}} value="2"><label for=str2+{{key}}></label></span>
+                            <span><input type="radio" name={{key}} id=str1+{{key}} value="1"><label for=str1+{{key}}></label></span>
+                        </div>
 					</div>
 				</td>
 			</tr>
