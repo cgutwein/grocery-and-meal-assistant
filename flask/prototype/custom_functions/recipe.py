@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import ast
 
 global_data = pd.read_csv('../python/data/data.csv')
-global_data.drop('Unnamed: 0', axis=1, inplace=True)
+global_data.drop('index', axis=1, inplace=True)
 
 #################
 ################# End of bloated data block
@@ -71,6 +71,7 @@ def return_recipes(calories=2500,
     cuisine = ast.literal_eval(cuisine)
     ## For testing, remove and find better solution for loading data after testing
     data=global_data
+
     ingredients=pd.read_csv('../python/data/ingredients_short.csv')
     ingredients.drop('Unnamed: 0', axis=1, inplace=True)
 
@@ -144,6 +145,8 @@ def return_recipes(calories=2500,
 
     options.drop(zero_column, axis=1, inplace=True)
 
+    #print("shape 1", options.shape)
+
     #update ingredients
     ingr=[x for x in options.columns if x not in non_ingredients]
 
@@ -153,9 +156,8 @@ def return_recipes(calories=2500,
 
     # Keep only the recipes if the number of additional key ingredients doesnt exceed n
     sums=options[needed].sum(axis=1)
-    ind=[x for x in sums.index if sums.loc[x]<=n_additional_ingredients]
+    ind=[i for i in sums.index if sums.loc[i]<=n_additional_ingredients]
     options=options.loc[ind]
-
     recommendation=options.loc[ind][['title', 'calories', 'protein', 'carbs', 'fats', 'image_link', 'recipe_text', 'ingredient_txt']]
 
     recommendation['products to add']=pd.Series([', '.join(list(options.loc[i][needed][options.loc[i][needed]==1].index)) for i in ind], index=ind)
@@ -167,24 +169,29 @@ def return_recipes(calories=2500,
     else:
         recommendation['nutrition penalty']=pd.Series([(recommendation.loc[i]['carbs']+recommendation.loc[i]['fats']) for i in recommendation.index], index=recommendation.index)
     # Creation of temp_dataset for the user_score calculation
+    
+    if sort_field=='user score':
+        
+        user_score=dict(zip([int(x) for x in user_score.keys()], [int(y) for y in user_score.values()]))
+        temp_data=data[data.meal==meal_type]
+        temp_data=temp_data.drop(non_ingredients, axis=1)
 
-    temp_data=data[data.meal==meal_type]
-    temp_data=temp_data.drop(non_ingredients, axis=1)
-
-    user_score={461:5, 1693:4, 400:5, 189:2, 2704:3, 4867:3, 5470:4, 159:3, 1588:4, 447:3, 26:2, 101:1}
     # Filter the user_score dict to have only the items of the appropriate meal type
-    keys=list(filter(lambda x: data.loc[x].meal==meal_type, user_score.keys()))
-    temp_user_score=dict(zip(keys, [user_score[key] for key in keys]))
+        keys=list(filter(lambda x: data.loc[x].meal==meal_type, user_score.keys()))
+        temp_user_score=dict(zip(keys, [user_score[key] for key in keys]))
 
-    if len(temp_user_score.keys())==0:
+        if len(temp_user_score.keys())==0:
+            recommendation['user score']=pd.Series([0]*recommendation.shape[0], index=recommendation.index)
+        else:
+            recommendation['user score']=pd.Series([score_preference(i, temp_user_score, temp_data) for i in recommendation.index], index=recommendation.index)
+    else:      
         recommendation['user score']=pd.Series([0]*recommendation.shape[0], index=recommendation.index)
-    else:
-        recommendation['user score']=pd.Series([score_preference(i, temp_user_score, temp_data) for i in recommendation.index], index=recommendation.index)
 
    # Create the output dataset
     rec_list = []
     n = len(recommendation)
-    rec_sorted = recommendation.sort_values(by=[sort_field])
+    sort_order={'title':True, 'calories':True, 'fats':True, 'carbs':True, 'protein': False, 'products to add': True, 'nutrition penalty': True, 'user score': False}
+    rec_sorted = recommendation.sort_values(by=[sort_field], ascending=sort_order[sort_field])
     print("rec_sorted", len(rec_sorted['image_link']))
     for i in range(n):
         rec_list.append(RecListTableItem(rec_sorted.iloc[i]['title'],rec_sorted.iloc[i]['calories'],rec_sorted.iloc[i]['fats'],rec_sorted.iloc[i]['carbs'],rec_sorted.iloc[i]['protein'],rec_sorted.iloc[i]['products to add'], rec_sorted.iloc[i]['nutrition penalty'], rec_sorted.iloc[i]['user score']))

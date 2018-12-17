@@ -11,8 +11,8 @@ from sqlalchemy import exists
 import tablib
 import os
 from prototype.custom_functions import grocery, recipe
-import pandas as pd
 from datetime import datetime
+import json
 
 @app.before_request
 def before_request():
@@ -145,8 +145,23 @@ def grocery_list():
         return redirect('/index')
 
 @app.route('/recipes', methods=['GET', 'POST'])
+
 def recipes():
     if current_user.is_authenticated:
+        user_score={}         
+        if request.method == "POST":
+                
+            print('request.files', request.files)
+            print('request.form', request.form) 
+            
+            if 'user_score' in request.form.keys():
+                user_score=request.form.get("user_score", {})
+                user_score=json.loads(user_score)
+                with open('user_score.json', 'w') as f:
+                    json.dump(user_score, f)
+            else:
+                user_score=json.load(open('user_score.json'))
+                print("json loaded", user_score)
         form = RecipeGenForm()
         if form.validate_on_submit():
             q = Listdb.query.filter(Listdb.list_name == current_user.current_list).filter(Listdb.user_id == current_user.id)
@@ -154,13 +169,15 @@ def recipes():
             dof = form.dof.data
             meal_type = form.meal_type.data
             sort_field = form.sorting_field.data
+            user_score=user_score                
+
             if current_user.daily_cal:
-                recs = recipe.return_recipes(calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field, userspecs=current_user.restrictions)
+                recs = recipe.return_recipes(user_score=user_score, calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field, userspecs=current_user.restrictions)
             else:
                 recs = "Please complete your user profile to see recipe recommendations."
             if len(recs) == 0:
-                return render_template('recipes.html', title='Grocery List - Current', form=form)
-            return render_template('recipes.html', title='Grocery List - Current', form=form, recs=recs)
+                return render_template('recipes.html', title='Grocery List - Current', form=form, user_score=user_score)
+            return render_template('recipes.html', title='Grocery List - Current', form=form, recs=recs, user_score=user_score)
         return render_template('recipes.html', title='Recepticon Recommendations', form=form)
     else:
         return redirect('/index')

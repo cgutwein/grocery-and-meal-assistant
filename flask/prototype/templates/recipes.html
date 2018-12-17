@@ -39,26 +39,72 @@
 
 <script src="https://ajax.google apis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script>
+<script>    
+
+//var user_score = {};
     
+//$.getJSON("user_score.json", function(data){
+//    $.each(data, function(index, value){
+//      console.log(value);
+//    });
+//  });
+       
+new_user_score={}
+{% if user_score is defined %}
+
+{% for key, value in user_score.items() %}
+l_key=parseInt({{key}});
+l_value=parseInt({{value}});
+new_user_score[l_key]=l_value;
+ 
+{% endfor %}
+console.log("score", new_user_score)
+
+user_score=new_user_score;
 $(document).ready(function(){
-    var user_score = {};
+    
+   
     
     // Check Radio-box
     $(".rating input:radio").attr("checked", false);
+    
+ //   for (var x in user_score) {   // JSON iteration
+   // 
+    //    console.log("sel", x, user_score[x])
+        
+   //     $('input[type=radio][name=x][value=user_score[x]]').attr("checked", true);
+    //    }
 
     $(".rating input").click(function () {  
         //console.log(this, $(this).parent().find('name'))
-        $(".rating span").removeClass('checked');
-        $(this).parent().addClass('checked');
+        
+        
+        $(this).parent().find("name").css({"background-color": "#D8D8D8"});
+        $(this).css({"background-color": "#7ED321"});
+        $(this).nextAll().css({"background-color": "#7ED321"});
+        
+        console.log(this)
+            
+        
         user_score[this.name]=this.value;
         console.log(user_score)
+        
+         $.ajax({
+        type: 'POST',
+        url: "/recipes",
+        data: {user_score: JSON.stringify(user_score)},
+             
+        //success: function (response) {
+        //    alert("data added");
+         //},         
     });
-    
+
+        
+    });
 
    
 }); 
-    
+{% endif %}    
 </script>
 
 <div class="container">
