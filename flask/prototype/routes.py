@@ -8,6 +8,7 @@ from werkzeug.urls import url_parse
 from prototype import db
 from werkzeug import secure_filename
 from sqlalchemy import exists
+import pandas as pd
 import tablib
 import os
 from prototype.custom_functions import grocery, recipe
@@ -148,12 +149,12 @@ def grocery_list():
 
 def recipes():
     if current_user.is_authenticated:
-        user_score={}         
+        user_score={}
         if request.method == "POST":
-                
+
             print('request.files', request.files)
-            print('request.form', request.form) 
-            
+            print('request.form', request.form)
+
             if 'user_score' in request.form.keys():
                 user_score=request.form.get("user_score", {})
                 user_score=json.loads(user_score)
@@ -169,7 +170,7 @@ def recipes():
             dof = form.dof.data
             meal_type = form.meal_type.data
             sort_field = form.sorting_field.data
-            user_score=user_score                
+            user_score=user_score
 
             if current_user.daily_cal:
                 recs = recipe.return_recipes(user_score=user_score, calories = current_user.daily_cal, protein = current_user.protein, fat = current_user.fat, carb = current_user.carb, complexity = current_user.complexity, cuisine=current_user.cuisine, n_additional_ingredients=dof, meal_type=meal_type, grocery=groceries, sort_field=sort_field, userspecs=current_user.restrictions)
