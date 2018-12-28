@@ -2,45 +2,85 @@
 
 {% block content %}
 
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
 
 <style>
-.rating {
-    float:left;
-    width:110px;
+
+
+$unchecked-star: '\2606';
+$unchecked-color: #888;
+$checked-star: '\2605';
+$checked-color: #e52;
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  * {
+    font-size: 1rem;
+  }
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > input {
+    display: none;
+    & + label {
+      /* only enough room for the star */
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 1em;
+      white-space: nowrap;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: $unchecked-star;
+        color: $unchecked-color;
+      }
+    }
+    &:checked ~ label:before,
+      & + label:hover ~ label:before,
+      & + label:hover:before {
+      content: $checked-star;
+      color: #e52;
+      text-shadow: 0 0 1px #333;
+    }
+  }
+  
+  /* the hidden clearer */
+  & > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: .5em;
+    margin-left: -.5em;
+  }
+  & > .star-cb-clear + label:before {
+    width: .5em;
+  }
+
+  &:hover > input + label:before {
+    content: $unchecked-star;
+    color: $unchecked-color;
+    text-shadow: none;
+  }
+  &:hover > input + label:hover ~ label:before,
+  &:hover > input + label:hover:before {
+    content: $checked-star;
+    color: $checked-color;
+    text-shadow: 0 0 1px #333;
+  }
 }
-.rating span { float:right; position:relative; }
-.rating span input {
-    position:relative;
-    top:0px;
-    left:0px;
-    opacity:0;
-}
-.rating span label {
-    display:inline-block;
-    position:relative;
-    width:16px;
-    height:16px;
-    color:#FFF;
-    background:#ccc;
-    margin-right:0px;
-    line-height:20px;
-    border-radius:60%;
-    -webkit-border-radius:60%;
-}
-.rating span:hover ~ span label,
-.rating span:hover label,
-.rating span.checked label,
-.rating span.checked ~ span label {
-    background:#6BFF33;
-    color:#FFF;
-}
+
+
+
 
 </style>
 
-<script src="https://ajax.google apis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<script>    
-
+<script>
+    
+    
 //var user_score = {};
     
 //$.getJSON("user_score.json", function(data){
@@ -49,6 +89,7 @@
 //    });
 //  });
        
+// Upload existing user scores    
 new_user_score={}
 {% if user_score is defined %}
 
@@ -58,53 +99,74 @@ l_value=parseInt({{value}});
 new_user_score[l_key]=l_value;
  
 {% endfor %}
-console.log("score", new_user_score)
+//console.log("score", new_user_score)
 
-user_score=new_user_score;
-$(document).ready(function(){
+{% endif %}   
+ 
+user_score=new_user_score; 
+
+
+$(document).ready(function(){   
     
+       for (var x in user_score) {   // JSON iteration
+      id_str='rating-'+user_score[x]+'+'+x;
+      // console.log("sel", x, user_score[x], id_str
+
+           score=document.getElementById(id_str);
+        //   console.log("score", score)
+           
+           if (!!score) {
+        //    console.log("score defined", score)
+            $(score).prop("checked", true);
+               
+} 
+           
+           
+        }
    
-    
-    // Check Radio-box
-    $(".rating input:radio").attr("checked", false);
-    
- //   for (var x in user_score) {   // JSON iteration
-   // 
-    //    console.log("sel", x, user_score[x])
-        
-   //     $('input[type=radio][name=x][value=user_score[x]]').attr("checked", true);
-    //    }
-
-    $(".rating input").click(function () {  
-        //console.log(this, $(this).parent().find('name'))
-        
-        
-        $(this).parent().find("name").css({"background-color": "#D8D8D8"});
-        $(this).css({"background-color": "#7ED321"});
-        $(this).nextAll().css({"background-color": "#7ED321"});
-        
-        console.log(this)
-            
-        
-        user_score[this.name]=this.value;
-        console.log(user_score)
+      $('[class*="rating"]').change(function () {
+  //  console.log(this)
+          
+          user_score[this.name]=parseInt(this.value);
+     //   console.log(user_score)
         
          $.ajax({
         type: 'POST',
         url: "/recipes",
         data: {user_score: JSON.stringify(user_score)},
+          
+  });
+           });
+     });
+    // Check Radio-box
+
+  //  $(".rating:radio").attr("checked", false);
+    
+ 
+
+ //   $(".rating").click(function () {  
+        //console.log(this, $(this).parent().find('name'))
+        
+        
+       // $(this).parent().find("name").css({"background-color": "#D8D8D8"});
+    //    $(this).css({"background-color": "#7ED321"});
+    //    $(this).nextAll().css({"background-color": "#7ED321"});
+        
+  //      console.log("this", this, $(this).parent().find("name"))
+            
+        
+       
              
         //success: function (response) {
         //    alert("data added");
          //},         
-    });
+ //   });
 
         
-    });
+  
 
    
-}); 
-{% endif %}    
+  
 </script>
 
 <div class="container">
@@ -188,15 +250,26 @@ $(document).ready(function(){
 						<hr>
 						<b> Recipe Instructions: </b> {{value['recipe_text']}}
                     <br>
+                    <br>
+                                             
+                   <form>
+  <fieldset>
+    <span class="star-cb-group">
+        <input type="radio" class='rating' id=rating-1+{{key}} name={{key}} value=1 /><label for="rating-1">1</label>
+        <input type="radio" class='rating' id=rating-2+{{key}} name={{key}} value=2 /><label for="rating-2">2</label>
+        <input type="radio" class='rating' id=rating-3+{{key}} name={{key}} value=3 /><label for="rating-3">3</label>
+          <input type="radio" class='rating' id=rating-4+{{key}} name={{key}} value=4  /><label for="rating-4">4</label>
+      <input type="radio" class='rating' id=rating-5+{{key}} name={{key}} value=5 /><label for="rating-5">5</label>
+    
+      
+      
+      
+    </span>
+  </fieldset>
+</form>
 
-                        
-                        <div class="rating">
-                            <span><input type="radio" name={{key}} id=str5+{{key}} value="5"><label for=str5+{{key}}></label></span>                            
-                            <span><input type="radio" name={{key}} id=str4+{{key}} value="4"><label for=str4+{{key}}></label></span>
-                            <span><input type="radio" name={{key}} id=str3+{{key}} value="3"><label for=str3+{{key}}></label></span>
-                            <span><input type="radio" name={{key}} id=str2+{{key}} value="2"><label for=str2+{{key}}></label></span>
-                            <span><input type="radio" name={{key}} id=str1+{{key}} value="1"><label for=str1+{{key}}></label></span>
-                        </div>
+                    
+                    
 					</div>
 				</td>
 			</tr>
